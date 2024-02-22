@@ -1,9 +1,7 @@
-// import logo from './logo.svg';
 import React, { useState } from 'react';
 
 import './App.scss';
-// import './styles/partials/global.scss';
-import VideoData from './data/video-details.json'
+import videoData from './data/video-details.json'
 import nextVideo from './data/videos.json'
 
 import Header from './components/Header/Header';
@@ -14,13 +12,12 @@ import NextVideo from './components/NextVideo/NextVideo';
 
 function App() {
 
-  const [mainVideo, setMainVideo] = useState(VideoData[0]);
-  console.log({ nextVideo });
+  const [mainVideo, setMainVideo] = useState(videoData[0]);
 
-  // function updateMainVideo(id){
-  //   let nextMainVideo = nextVideo.find((video) => video.id === id)
-  //   setMainVideo(nextMainVideo);
-  // }
+  function updateMainVideo(clickedid) {
+    const nextMainVideo = videoData.find((video) => video.id === clickedid)
+    setMainVideo(nextMainVideo);
+  }
 
   return (
     <div >
@@ -29,10 +26,8 @@ function App() {
       <VideoDetails mainVideo={mainVideo} />
       <section >
         <Comments mainVideo={mainVideo} />
-        <NextVideo nextVideo={nextVideo} />
+        <NextVideo nextVideo={nextVideo} mainVideo={mainVideo} updateMainVideo={updateMainVideo} />
       </section>
-
-      {/* currentVideo={mainVideo} */}
     </div>
   );
 }

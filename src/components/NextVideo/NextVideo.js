@@ -1,7 +1,7 @@
 import './NextVideo.scss'
 import VideoItem from "../VideoItem/VideoItem";
 
-function NextVideo({nextVideo}) {
+function NextVideo({nextVideo , mainVideo, updateMainVideo}) {
 
     return (
         <section className="next__video">
@@ -12,8 +12,8 @@ function NextVideo({nextVideo}) {
                     <VideoItem 
                         key={videos.id}
                         videos={videos}
-                        // isActive={videos.id === currentVideo.id}
-                        // setMainVideo={setMainVideo}
+                        isPlaying={videos.id === mainVideo.id}
+                        updateMainVideo={updateMainVideo}
                         />
                 )
             })}
