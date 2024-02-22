@@ -1,0 +1,131 @@
+@use '../../styles/partials/mixins' as*;
+@use '../../styles/partials/variable' as*;
+
+
+.navbar {
+    @include setPadding();
+    @include tablet {
+        @include setPadding_tablet;
+        display: flex;
+        flex-direction: row;
+        background-color:$primary_background_color;
+        width: 100%;
+
+        @include desktop{
+            @include setPadding_desktop();
+        }
+    }
+
+    &__logo {
+        display: flex;
+        justify-content: center;
+        padding-bottom: 1rem;
+        align-items: center;
+
+        @include tablet{
+            padding-bottom:0;
+        }
+
+        &--item {
+           max-height: 25px;
+           max-width: 120px;
+
+        }
+    }
+    &__side-container {
+        @include tablet {
+            display: flex;
+            flex: 1 1;
+            width: 80%;
+            justify-content: flex-end;
+            display: flex;
+            align-items: center;
+            width: 30%;
+            gap: 2rem;
+        }
+    }
+    &__search {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        gap: 1rem;
+        padding-bottom: 1rem;
+        @include tablet{
+            padding-bottom:0;
+        }
+    }
+
+    &__image-mobile {
+        @include tablet {
+            display: none;
+        }
+        @include avatar-container();
+        img {
+            @include avatar();
+        }
+    }
+
+    &__image-tablet {
+        display: none;
+        @include tablet {
+            display: flex;
+            @include  avatar-container();
+            img {
+                @include avatar();
+            }
+        }
+    }
+    &__button {
+        display: flex;
+        justify-content: center;
+
+        @include tablet {
+            width: 13rem;
+        }
+        &--upload {
+            color: $primary_background_color;
+            background-color: $primary_color_button;
+            border: none;
+            width: 100%;
+            background-image: url('../../assets/images/icons/upload.svg');
+            background-repeat: no-repeat;
+            height: 45px;
+            width: 100%;
+            border-radius: 0.5rem;
+            box-sizing: border-box;
+            background-repeat: no-repeat;
+            padding-left: 2rem;
+            background-size: 1.5rem;
+            background-position: (0.5rem 0.5rem);
+            font-size: 1rem;
+        }
+    }
+}
+
+input {
+    background-image: url('../../assets/images/icons/search.svg');
+    background-repeat: no-repeat;
+    height: 45px;
+    width: 100%;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    padding-left: 2rem;
+    background-size: 1.5rem;
+    background-position: (0.5rem 0.3rem);
+    font-size: 1rem;
+    border-color: $divider_color;
+    border-style: solid;
+    background-color: $form_background_color;
+    outline: none;
+
+    &:focus {
+        border-color: $primary_color_button;
+    }
+}
+
+input::placeholder {
+    padding-left: 0.25rem;
+    color: $secondary_color_brainflix;
+    font-family: "Avenir Next LT Pro-Regular";
+}

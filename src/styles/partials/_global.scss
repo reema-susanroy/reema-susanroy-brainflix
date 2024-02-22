@@ -1,0 +1,19 @@
+@use './mixins' as *;
+@use './typography' as*;
+@use './variables' as*;
+
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Avenir Next LT Pro-Regular';
+    font-size: 1rem;
+    margin: 0;
+}
+header{
+    display: flex;
+}
