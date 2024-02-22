@@ -1,8 +1,18 @@
 @use '../../styles/partials/variable' as*;
+@use '../../styles/partials/mixins' as*;
 
+
+.form__comments-cont{
+    @include setPadding();
+
+    @include tablet{
+        @include setPadding_tablet();
+    }
+}
 .form__comments{
     display: flex;
     gap: 1rem;
+    padding: 1rem 0;
 
     &--userImage {
         position: relative;

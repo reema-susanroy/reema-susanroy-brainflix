@@ -12,7 +12,7 @@ function Comments({ mainVideo }) {
     return (
         <>
             {commentArr && (
-                <div>
+                <div className='form__comments-cont'>
                     <h3>{commentArr.length} comments</h3>
                     <form className='form__comments'>
                         <div className='form__comments-image'>

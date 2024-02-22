@@ -4,6 +4,7 @@
 
 .navbar {
     @include setPadding();
+    width: 100%; //upload button expands as screen stretches
     @include tablet {
         @include setPadding_tablet;
         display: flex;
@@ -46,7 +47,7 @@
     }
     &__search {
         display: flex;
-        justify-content: space-evenly;
+        // justify-content: space-evenly; --holds search and mohan together
         align-items: center;
         gap: 1rem;
         padding-bottom: 1rem;
