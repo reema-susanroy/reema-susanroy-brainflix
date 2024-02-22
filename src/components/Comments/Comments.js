@@ -25,10 +25,11 @@ function Comments({ mainVideo }) {
                                 <label className="title">Join the Conversation</label>
                                 <textarea className="form__comments--input-box" placeholder="Add a new comment"
                                     id="userComment" rows="4"></textarea>
+                                    </section>
                             <div className='form__comments--button'>
                             <button className='form__comments--button-item'>Comment</button>
                             </div>
-                            </section>
+                            
                         </div>
 
                     </form>
