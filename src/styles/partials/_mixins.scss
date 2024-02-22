@@ -1,3 +1,5 @@
+@use '../../styles/partials/variable' as*;
+
 @mixin tablet {
 	@media (min-width: 768px){
 		@content;
@@ -15,6 +17,7 @@
         border-radius: 50%;
         overflow: hidden;
         object-fit: cover;
+        background-color: $divider_color;
 }
 @mixin avatar{
         width: 100%;

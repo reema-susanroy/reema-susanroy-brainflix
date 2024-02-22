@@ -1,0 +1,9 @@
+@use '../../styles/partials/mixins' as*;
+
+.next__video {
+    @include setPadding();
+
+    // @include desktop{
+    //     display: flex;
+    // }
+}
