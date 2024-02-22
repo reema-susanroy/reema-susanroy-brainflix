@@ -1,5 +1,5 @@
 // import logo from './logo.svg';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import './App.scss';
 // import './styles/partials/global.scss';
@@ -12,12 +12,11 @@ import Comments from './components/Comments/Comments';
 
 function App() {
 
-  const [mainVideo, setMainVideo] = useState({});
+  const [mainVideo, setMainVideo] = useState(VideoData[0]);
 
-  useEffect(() => {
-    // Simulate fetching data from provided files
-    setMainVideo(VideoData[0]); // Assuming the first video is the main video
-  }, []);
+  // useEffect(() => {
+  //   setMainVideo(VideoData[0]); 
+  // }, []);
   return ( 
     <div >
         <Header />

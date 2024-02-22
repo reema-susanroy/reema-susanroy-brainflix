@@ -1,4 +1,4 @@
-import Video from '../Video/Video';
+// import Video from '../Video/Video';
 import './VideoDetails.scss';
 import views from '../../assets/images/icons/views.svg'
 import likes from '../../assets/images/icons/likes.svg'
