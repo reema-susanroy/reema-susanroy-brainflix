@@ -9,6 +9,7 @@
         // @include setPadding_tablet();
     }
 }
+
 .form__comments-title {
     font-family: "Avenir Next LT Pro-Bold"
 }
@@ -17,30 +18,39 @@
     display: flex;
     gap: 1rem;
     padding: 1rem 0;
-    @include desktop{
+    border-bottom: 1px solid $divider_color;
+
+    @include desktop {
         padding: 1rem 1rem;
     }
 
     &--userImage {
         position: relative;
         top: 1rem;
-        width: 48px;
-        height: 48px;
+        width: 36px;
+        height: 36px;
         border-radius: 50%;
         overflow: hidden;
         object-fit: cover;
-        background-color: white;
+        background-color: $divider_color;
+
+        @include tablet {
+            width: 40px;
+            height: 40px;
+        }
 
         img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: left;
         }
     }
 
     &--userinput {
         flex: 1;
-        @include tablet{
+
+        @include tablet {
             display: flex;
             width: 100%;
             justify-content: flex-end;
@@ -57,6 +67,14 @@
         }
     }
 
+    &--label{
+        text-transform: uppercase;
+        color: $secondary_text_color;
+        font-size: 12px;
+        font-weight: 600;
+        padding-bottom: .5rem;
+    }
+
     &--input-box {
         border-color: $divider_color;
         outline: none;
@@ -64,24 +82,28 @@
         border-style: solid;
         padding: 0.75rem;
         background-color: $form_background_color ;
+
         @include tablet {
             width: 90%;
             height: 3rem;
         }
-        &:focus{
+
+        &:focus {
             border: 2px solid $primary_color_button;
-            
+
         }
     }
 
     &--button {
         padding-top: 1rem;
-        @include tablet{
+
+        @include tablet {
             width: 30%;
         }
     }
 
     &--button-item {
+        text-transform: uppercase;
         cursor: pointer;
         color: $primary_background_color;
         background-color: $primary_color_button;
@@ -97,10 +119,13 @@
         padding-left: 2rem;
         background-size: 1.5rem;
         background-position: (0.5rem 0.5rem);
-        font-size: 1rem;
+        font-size: 12px;
 
-        &:hover{
+        &:hover {
             background-color: $secondary_color_button;
         }
     }
+}
+placeholder{
+    color: black;
 }

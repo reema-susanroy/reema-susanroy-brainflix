@@ -1,27 +1,16 @@
-// import Video from '../Video/Video';
 import './VideoDetails.scss';
-// import {timeFormat} from '../CommentDisplay/CommentDisplay';
 import viewsIcon from '../../assets/images/icons/views.svg'
 import likesIcon from '../../assets/images/icons/likes.svg'
 
 
 function VideoDetails({ mainVideo }) {
-    console.log("Inside videosDeayils: " + { mainVideo });
-    const {channel,timestamp,views,likes,description} = mainVideo;
-
-    //calling timeFormat function
+    const { channel, timestamp, views, likes, description } = mainVideo;
     const date = new Date(timestamp)
-    const today = new Date();
+    const utcString= date.toISOString();
+    const month = new Date(utcString).getUTCMonth() + 1;
+    const dateValue = new Date(utcString).getUTCDate();
+    const year = new Date(utcString).getUTCFullYear();
 
-    // const day = dayArray[date.getDay()];
-    // const dateValue = ((String(date.getDate()).length) === 2 ? '' : '0') + date.getDate();
-    const dateValue = date.getDate();
-    const month = (date.getMonth()+1);
-    const year =date.getFullYear();
-
-
-    console.log(date)
-    console.log(today);
     return (
         <div>
             <h1 className='video__title'>{mainVideo.title}</h1>

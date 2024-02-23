@@ -14,9 +14,9 @@ function Comments({ mainVideo }) {
                         <img src={avatar} alt="avatar" />
                     </section>
                 </div>
-                <div class=" form__comments--userinput">
-                    <section class=" form__comments--input">
-                        <label className="title">Join the Conversation</label>
+                <div className=" form__comments--userinput">
+                    <section className=" form__comments--input">
+                        <label className="form__comments--label">Join the Conversation</label>
                         <textarea className="form__comments--input-box" placeholder="Add a new comment"
                             id="userComment" rows="4"></textarea>
                     </section>

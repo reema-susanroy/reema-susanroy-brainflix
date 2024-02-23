@@ -1,7 +1,6 @@
 import './MainVideo.scss';
 
 function MainVideo({ mainVideo }){
-    console.log({mainVideo});
     
     return(
         <div className="video__player">

@@ -7,7 +7,7 @@ function NextVideo({ nextVideo, mainVideo, updateMainVideo }) {
 
     return (
         <section className="next__video">
-            <h3> NEXT VIDEOS</h3>
+            <h3 className='next__video--title'> NEXT VIDEOS</h3>
             <ul>
                 {filteredVideos.map((videos) => {
                     return (

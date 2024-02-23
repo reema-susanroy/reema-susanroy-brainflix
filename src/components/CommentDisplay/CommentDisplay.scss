@@ -4,9 +4,9 @@
 .comment__user {
         display: flex;
         font-size: 0.9rem;
-        border-top: 1px solid #E1E1E1;
+        // border-top: 1px solid #E1E1E1;
         padding: 1rem 0;
-        border-bottom: 1px solid #E1E1E1;
+        border-bottom: 1px solid $divider_color;
         @include desktop{
             padding-right: 2rem;
         }
@@ -32,6 +32,7 @@
 
     &--name {
         width: 50%;
+        font-weight: 900;
     }
 
     &--date {
@@ -39,6 +40,7 @@
         display: flex;
         justify-content: flex-end;
         width: 100vw;
+        color: $secondary_text_color;
     }
     &--comment {
         // padding: 1rem 0;

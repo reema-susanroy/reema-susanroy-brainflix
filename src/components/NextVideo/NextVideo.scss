@@ -1,4 +1,6 @@
 @use '../../styles/partials/mixins' as*;
+@use '../../styles/partials/variable' as*;
+
 
 .next__video {
     // @include setPadding();
@@ -6,4 +8,8 @@
     // @include desktop{
     //     display: flex;
     // }
+    &--title{
+        color: $secondary_text_color;
+        font-size: .8rem;
+    }
 }
