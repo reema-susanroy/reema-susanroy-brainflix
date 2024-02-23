@@ -36,3 +36,7 @@
 @mixin setPadding_desktop {
     padding: 0 9rem;
 }
+
+@mixin textSecondaryColor{
+    color : $secondary_text_color;
+}

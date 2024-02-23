@@ -2,7 +2,7 @@ import './VideoItem.scss'
 
 function VideoItem({ videos ,isPlaying , updateMainVideo}) {
     // let className = "contestant-nav-item";
-    // if (isActive) {
+    // if (isPlaying) {
     //     className += " contestant-nav-item--selected";
     // }
 
@@ -17,8 +17,8 @@ function VideoItem({ videos ,isPlaying , updateMainVideo}) {
                         <img className="video__image--img" src={videos.image} alt={videos.name} />
                     </div>
                     <div className='video__details'>
-                        <p>{videos.title} </p>
-                        <p> {videos.channel}</p>
+                        <p className='video__details--title'>{videos.title} </p>
+                        <p className='video__details--author'> {videos.channel}</p>
                     </div>
                 </li>
             </article>

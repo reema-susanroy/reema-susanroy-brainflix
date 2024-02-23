@@ -1,38 +1,57 @@
 @use '../../styles/partials/mixins' as*;
 @use '../../styles/partials/variable' as*;
 @use '../../styles/partials/typography' as*;
+
 .video {
 
     &__title {
         font-family: 'Avenir Next LT Pro-Bold';
-    // font-size: 1.5rem;
-    font-weight: 700;
+        font-size: 24px;
+        line-height: 32px;
+        // font-weight: 700;
 
+        @include tablet {
+            font-size: 33px;
+            line-height: 44px;
+        }
     }
 
     &__container {
         display: flex;
         justify-content: flex-start;
         gap: 1rem;
+        border-bottom: 1px solid $divider_color;
     }
 
     &__data {
         display: flex;
         flex-direction: column;
-        @include tablet{
+
+        @include tablet {
             flex-direction: row;
             gap: 2rem;
+        }
+        &--channel{
+            font-family: 'Avenir Next LT Pro-Bold';
+        }
+        &--time{
+            @include textSecondaryColor();
         }
     }
 
     &__social {
         display: flex;
         flex-direction: column;
-        @include tablet{
+        @include textSecondaryColor();
+        @include tablet {
             flex: 1;
             justify-content: flex-end;
             flex-direction: row;
             gap: 2rem;
+        }
+
+        @include desktop {
+            padding-right: 1rem;
         }
 
         &--icons {
@@ -43,9 +62,11 @@
         }
     }
 
+    &__description {
+        @include desktop{
+        padding-right: 1rem;
+        }
+    }
 
-}
 
-main{
- @include setPadding(); 
 }

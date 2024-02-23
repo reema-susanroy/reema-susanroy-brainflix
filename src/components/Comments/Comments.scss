@@ -3,17 +3,23 @@
 
 
 .form__comments-cont {
-    @include setPadding();
+    // @include setPadding();
 
     @include tablet {
-        @include setPadding_tablet();
+        // @include setPadding_tablet();
     }
+}
+.form__comments-title {
+    font-family: "Avenir Next LT Pro-Bold"
 }
 
 .form__comments {
     display: flex;
     gap: 1rem;
     padding: 1rem 0;
+    @include desktop{
+        padding: 1rem 1rem;
+    }
 
     &--userImage {
         position: relative;
@@ -52,14 +58,19 @@
     }
 
     &--input-box {
-        // border: 1px solid $ternary_color;
+        border-color: $divider_color;
+        outline: none;
         border-radius: 4px;
+        border-style: solid;
         padding: 0.75rem;
-        // background-color: $alternative_background_color ;
-
+        background-color: $form_background_color ;
         @include tablet {
             width: 90%;
             height: 3rem;
+        }
+        &:focus{
+            border: 2px solid $primary_color_button;
+            
         }
     }
 
@@ -71,6 +82,7 @@
     }
 
     &--button-item {
+        cursor: pointer;
         color: $primary_background_color;
         background-color: $primary_color_button;
         border: none;
@@ -86,5 +98,9 @@
         background-size: 1.5rem;
         background-position: (0.5rem 0.5rem);
         font-size: 1rem;
+
+        &:hover{
+            background-color: $secondary_color_button;
+        }
     }
 }

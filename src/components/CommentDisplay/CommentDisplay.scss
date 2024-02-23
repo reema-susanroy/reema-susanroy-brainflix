@@ -1,4 +1,5 @@
 @use '../../styles/partials/variable' as*;
+@use '../../styles/partials/mixins' as*;
 
 .comment__user {
         display: flex;
@@ -6,6 +7,9 @@
         border-top: 1px solid #E1E1E1;
         padding: 1rem 0;
         border-bottom: 1px solid #E1E1E1;
+        @include desktop{
+            padding-right: 2rem;
+        }
     
     &--image-cont {
         padding-right: 1rem;

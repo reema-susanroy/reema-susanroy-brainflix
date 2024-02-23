@@ -1,6 +1,6 @@
-import './Video.scss';
+import './MainVideo.scss';
 
-function Video({ mainVideo }){
+function MainVideo({ mainVideo }){
     console.log({mainVideo});
     
     return(
@@ -12,4 +12,4 @@ function Video({ mainVideo }){
 }
 
 
-export default Video;
+export default MainVideo;

@@ -9,7 +9,7 @@ function VideoDetails({ mainVideo }) {
     const {channel,timestamp,views,likes,description} = mainVideo;
 
     return (
-        <main>
+        <div>
             <h1 className='video__title'>{mainVideo.title}</h1>
             <div className='video__container'>
                 <div className='video__data'>
@@ -28,9 +28,9 @@ function VideoDetails({ mainVideo }) {
                 </div>
             </div>
             <div>
-                <p>{description} </p>
+                <p className='video__description'>{description} </p>
             </div>
-        </main>
+        </div>
     )
 }
 
