@@ -21,6 +21,10 @@
         justify-content: flex-start;
         gap: 1rem;
         border-bottom: 1px solid $divider_color;
+        border-top: 1px solid $divider_color;
+        @include tablet{
+            border-top: none;
+        }
     }
 
     &__data {

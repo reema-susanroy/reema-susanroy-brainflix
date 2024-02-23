@@ -56,6 +56,10 @@
 
     &--author {
         margin: 0;
+        font-size: 12px;
+        @include tablet{
+            font-size: 15px;
+        }
     }
 }
 
