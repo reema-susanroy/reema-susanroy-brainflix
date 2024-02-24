@@ -1,7 +1,7 @@
 import './Header.scss';
 
 import logo from '../../assets/images/logo/BrainFlix-logo.svg'
-import avatar from '../../assets/images/Mohan-muruge.jpg'
+import avatar from '../../assets/images/photos/Mohan-muruge.jpg'
 
 function Header() {
     return (

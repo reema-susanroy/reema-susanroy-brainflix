@@ -1,6 +1,6 @@
 import CommentDisplay from '../CommentDisplay/CommentDisplay'
 import './Comments.scss';
-import avatar from '../../assets/images/Mohan-muruge.jpg'
+import avatar from '../../assets/images/photos/Mohan-muruge.jpg'
 
 function Comments({ mainVideo }) {
     const { comments } = mainVideo;

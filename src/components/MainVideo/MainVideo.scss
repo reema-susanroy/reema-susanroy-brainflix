@@ -15,7 +15,7 @@
             @include setPadding_tablet();
         }
         @include desktop{
-            @include setPadding_desktop();
+            padding: 0 4rem;
         }
     
     }

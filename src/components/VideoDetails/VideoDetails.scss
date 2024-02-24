@@ -67,6 +67,7 @@
     }
 
     &__description {
+        font-size: 14px;
         @include desktop{
         padding-right: 1rem;
         }
