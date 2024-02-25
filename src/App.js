@@ -19,7 +19,7 @@ function App() {
   }
 
   return (
-    <div >
+    <>
       <Header />
       <MainVideo mainVideo={mainVideo} />
       <main className='video-information'>
@@ -31,7 +31,7 @@ function App() {
           <NextVideo nextVideo={nextVideo} mainVideo={mainVideo} updateMainVideo={updateMainVideo} />
         </section>
       </main>
-    </div>
+    </>
   );
 }
 

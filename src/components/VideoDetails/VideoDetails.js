@@ -12,7 +12,7 @@ function VideoDetails({ mainVideo }) {
     const year = new Date(utcString).getUTCFullYear();
 
     return (
-        <div>
+        <>
             <h1 className='video__title'>{mainVideo.title}</h1>
             <div className='video__container'>
                 <div className='video__data'>
@@ -33,7 +33,7 @@ function VideoDetails({ mainVideo }) {
             <div>
                 <p className='video__description'>{description} </p>
             </div>
-        </div>
+        </>
     )
 }
 

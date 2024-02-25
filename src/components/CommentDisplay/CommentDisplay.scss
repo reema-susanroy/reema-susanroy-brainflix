@@ -2,28 +2,37 @@
 @use '../../styles/partials/mixins' as*;
 
 .comment__user {
-        display: flex;
-        font-size: 0.9rem;
-        // border-top: 1px solid #E1E1E1;
-        padding: 1rem 0;
-        border-bottom: 1px solid $divider_color;
-        @include desktop{
-            padding-right: 2rem;
-        }
-    
+    display: flex;
+    font-size: 0.9rem;
+    border-top: 1px solid #E1E1E1;
+    padding: 1rem 0;
+
+    @include desktop {
+        padding-right: 2rem;
+    }
+
     &--image-cont {
         padding-right: 1rem;
     }
+
     &--image {
         width: 40px;
         height: 40px;
         border-radius: 50%;
         background-color: $divider_color;
     }
+
     &--comment-cont {
         max-width: 100%;
         overflow: hidden;
         word-wrap: break-word;
+    }
+
+    &--comment {
+        margin-top: 0;
+        line-height: 20px;
+
+        font-size: 16px;
     }
 
     &--name-cont {
@@ -33,6 +42,7 @@
     &--name {
         width: 50%;
         font-weight: 900;
+        font-family: 'Avenir Next LT Pro-Demi';
     }
 
     &--date {

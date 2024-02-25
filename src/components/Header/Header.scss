@@ -1,19 +1,19 @@
-
 @use '../../styles/partials/mixins' as*;
 @use '../../styles/partials/variable' as*;
 
 
 .navbar {
     @include setPadding();
-    width: 100%; //upload button expands as screen stretches
+    width: 100%;
+
     @include tablet {
         @include setPadding_tablet;
         display: flex;
         flex-direction: row;
-        background-color:$primary_background_color;
+        background-color: $primary_background_color;
         width: 100%;
 
-        @include desktop{
+        @include desktop {
             @include setPadding_desktop();
         }
     }
@@ -24,16 +24,19 @@
         padding-bottom: 1rem;
         align-items: center;
 
-        @include tablet{
-            padding-bottom:0;
+        @include tablet {
+            padding-bottom: 0;
         }
 
         &--item {
-           max-height: 25px;
-           max-width: 120px;
+            height: 100%;
+            width: 100%;
+            max-height: 25px;
+            max-width: 120px;
 
         }
     }
+
     &__side-container {
         @include tablet {
             display: flex;
@@ -46,14 +49,15 @@
             gap: 2rem;
         }
     }
+
     &__search {
         display: flex;
-        // justify-content: space-evenly; --holds search and mohan together
         align-items: center;
         gap: 1rem;
         padding-bottom: 1rem;
-        @include tablet{
-            padding-bottom:0;
+
+        @include tablet {
+            padding-bottom: 0;
         }
     }
 
@@ -61,7 +65,9 @@
         @include tablet {
             display: none;
         }
+
         @include avatar-container();
+
         img {
             @include avatar();
         }
@@ -69,14 +75,17 @@
 
     &__image-tablet {
         display: none;
+
         @include tablet {
             display: flex;
-            @include  avatar-container();
+            @include avatar-container();
+
             img {
                 @include avatar();
             }
         }
     }
+
     &__button {
         display: flex;
         justify-content: center;
@@ -84,22 +93,28 @@
         @include tablet {
             width: 13rem;
         }
+
         &--upload {
+            cursor: pointer;
             color: $primary_background_color;
             background-color: $primary_color_button;
             border: none;
             width: 100%;
             background-image: url('../../assets/images/icons/upload.svg');
             background-repeat: no-repeat;
-            height: 45px;
+            height: 2.5rem;
             width: 100%;
-            border-radius: 0.5rem;
+            border-radius: 4px;
             box-sizing: border-box;
             background-repeat: no-repeat;
             padding-left: 2rem;
             background-size: 1.5rem;
             background-position: (0.5rem 0.5rem);
             font-size: 1rem;
+
+            &:hover {
+                background-color: $secondary_color_button;
+            }
         }
     }
 }
@@ -107,9 +122,9 @@
 input {
     background-image: url('../../assets/images/icons/search.svg');
     background-repeat: no-repeat;
-    height: 45px;
+    height: 2.5rem;
     width: 100%;
-    border-radius: 0.5rem;
+    border-radius: 4px;
     box-sizing: border-box;
     background-repeat: no-repeat;
     padding-left: 2rem;

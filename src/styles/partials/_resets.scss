@@ -1,0 +1,29 @@
+@use './mixins' as*;
+@use './variable' as*;
+
+header {
+    display: flex;
+    padding-top: 1rem;
+  }
+  
+  *,
+  ::before,
+  ::after {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Avenir Next LT Pro-Regular';
+    font-size: 1rem;
+    margin: 0;
+  }
+  
+  h1, ul{
+    margin: 0;
+  }
+  ul,
+  li,
+  p {
+    list-style-type: none;
+    padding: 0;
+  }

@@ -2,21 +2,24 @@
 @use '../../styles/partials/variable' as*;
 
 
-.video__player{
-    padding: 1rem 0;
-    @include tablet{
-        padding: 2rem 0;
+.video__player {
+    padding: 1rem 0 0;
+
+    @include tablet {
+        padding: 1.5rem 0 0;
     }
 
     &--image {
         width: 100%;
-        background-color:$secondary_color_brainflix ;
-        @include tablet{
+        background-color: $secondary_color_brainflix ;
+
+        @include tablet {
             @include setPadding_tablet();
         }
-        @include desktop{
-            padding: 0 4rem;
+
+        @include desktop {
+            padding: 0 9rem;
         }
-    
+
     }
 }
