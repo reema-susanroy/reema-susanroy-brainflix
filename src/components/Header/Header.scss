@@ -95,6 +95,7 @@
         }
 
         &--upload {
+            text-transform: uppercase;
             cursor: pointer;
             color: $primary_background_color;
             background-color: $primary_color_button;
@@ -107,10 +108,9 @@
             border-radius: 4px;
             box-sizing: border-box;
             background-repeat: no-repeat;
-            padding-left: 2rem;
             background-size: 1.5rem;
             background-position: (0.5rem 0.5rem);
-            font-size: 1rem;
+            font-size: 14px;
 
             &:hover {
                 background-color: $secondary_color_button;

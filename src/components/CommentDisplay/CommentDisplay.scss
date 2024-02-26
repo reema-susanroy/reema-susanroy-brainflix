@@ -4,7 +4,7 @@
 .comment__user {
     display: flex;
     font-size: 0.9rem;
-    border-top: 1px solid #E1E1E1;
+    border-top: 1px solid $divider_color;
     padding: 1rem 0;
 
     @include desktop {
@@ -29,10 +29,13 @@
     }
 
     &--comment {
-        margin-top: 0;
+        margin: 0;
         line-height: 20px;
+        font-size: 13px;
 
-        font-size: 16px;
+        @include tablet{
+            font-size: 15px;
+        }
     }
 
     &--name-cont {

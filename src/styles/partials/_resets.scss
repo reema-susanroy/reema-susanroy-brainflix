@@ -1,11 +1,6 @@
-@use './mixins' as*;
-@use './variable' as*;
+@use './typography' as*;
+@use './variable' as *;
 
-header {
-    display: flex;
-    padding-top: 1rem;
-  }
-  
   *,
   ::before,
   ::after {
@@ -14,6 +9,7 @@ header {
   
   body {
     font-family: 'Avenir Next LT Pro-Regular';
+    color: $primary_color_brainflix;
     font-size: 1rem;
     margin: 0;
   }
