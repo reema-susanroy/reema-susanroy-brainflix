@@ -5,6 +5,8 @@ import likesIcon from '../../assets/images/icons/likes.svg'
 
 function VideoDetails({ mainVideo }) {
     const { channel, timestamp, views, likes, description } = mainVideo;
+
+    //convert timestamp to mm-dd-yyyy format
     const date = new Date(timestamp)
     const utcString= date.toISOString();
     const month = new Date(utcString).getUTCMonth() + 1;

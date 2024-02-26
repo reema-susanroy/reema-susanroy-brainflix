@@ -13,6 +13,8 @@ function CommentDisplay({ comment }) {
                     <div className="comment__user--comment-cont">
                         <div className="comment__user--name-cont">
                             <p className="comment__user--name">{comment.name}</p>
+
+                            {/* Calls a function timeFormat to calculate dynamic timestamp */}
                             <p className="comment__user--date">{TimeFormat(comment.timestamp)}</p>
                         </div>
                         <div className="comment__user--comment-cont">
