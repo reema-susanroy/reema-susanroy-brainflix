@@ -6,16 +6,17 @@
     flex-direction: column;
     flex-wrap: wrap;
     gap: 20px;
-}
-
-.video {
-    display: flex;
-    gap: 1rem;
     padding: 0 0 1rem 0;
 
     @include tablet {
         padding: 0 0 1.5rem 0;
     }
+}
+
+.video {
+    display: flex;
+    gap: 1rem;
+    cursor: pointer;
 
     &__image {
         align-items: center;
