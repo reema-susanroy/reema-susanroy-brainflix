@@ -1,14 +1,16 @@
 import './Header.scss';
-
 import logo from '../../assets/images/logo/BrainFlix-logo.svg'
 import avatar from '../../assets/images/photos/Mohan-muruge.jpg'
+import { Link } from 'react-router-dom';
 
 function Header() {
     return (
         <header>
             <nav className='navbar'>
                 <div className='navbar__logo'>
-                    <img className='navbar__logo--item' src={logo} alt='brainflix-logo' />
+                    <Link to="/">
+                        <img className='navbar__logo--item' src={logo} alt='brainflix-logo' />
+                    </Link>
                 </div>
                 <div className='navbar__side-container'>
                     <div className='navbar__search navbar__logo'>

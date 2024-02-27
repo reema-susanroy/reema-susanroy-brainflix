@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
+import { BrowserRouter, Routes, Route} from 'react-router-dom';
 
 import './App.scss';
 import videoData from './data/video-details.json'
-import nextVideo from './data/videos.json'
+// import nextVideo from './data/videos.json'
 import Header from './components/Header/Header';
-import MainVideo from './components/MainVideo/MainVideo'
-import VideoDetails from './components/VideoDetails/VideoDetails';
-import Comments from './components/Comments/Comments';
-import NextVideo from './components/NextVideo/NextVideo';
+// import MainVideo from './components/MainVideo/MainVideo'
+// import VideoDetails from './components/VideoDetails/VideoDetails';
+// import Comments from './components/Comments/Comments';
+// import NextVideo from './components/NextVideo/NextVideo';
+import HomePage from './pages/HomePage/HomePage';
 
 function App() {
 
@@ -20,9 +22,17 @@ function App() {
 
   return (
     <>
+      
+      <BrowserRouter>
       <Header />
-      <MainVideo mainVideo={mainVideo} />
-      <main className='video-information'>
+        <Routes>
+          <Route path="/" element = {<HomePage mainVideo={mainVideo} updateMainVideo={updateMainVideo}/>}/>
+          {/* <Route path="/video" element = {}/>
+          <Route path="/video" element = {}/> */}
+        </Routes>
+      </BrowserRouter>
+      {/* <MainVideo mainVideo={mainVideo} /> */}
+      {/* <main className='video-information'>
         <section className='video-information__comments'>
           <VideoDetails mainVideo={mainVideo} />
           <Comments mainVideo={mainVideo} />
@@ -30,7 +40,7 @@ function App() {
         <section className='video-information__next-video'>
           <NextVideo nextVideo={nextVideo} mainVideo={mainVideo} updateMainVideo={updateMainVideo} />
         </section>
-      </main>
+      </main> */}
     </>
   );
 }
