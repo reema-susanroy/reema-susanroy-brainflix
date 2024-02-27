@@ -1,7 +1,8 @@
 import './NextVideo.scss'
 import VideoItem from "../VideoItem/VideoItem";
 
-function NextVideo({ nextVideo, mainVideo, updateMainVideo }) {
+function NextVideo({ nextVideo, mainVideo }) {
+    
     const filteredVideos = nextVideo.filter((video) =>
         video.id !== mainVideo.id);
 
@@ -14,7 +15,7 @@ function NextVideo({ nextVideo, mainVideo, updateMainVideo }) {
                         <VideoItem
                             key={videos.id}
                             videos={videos}
-                            updateMainVideo={updateMainVideo}
+                            // updateMainVideo={updateMainVideo}
                         />
                     )
                 })}

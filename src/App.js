@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Routes, Route} from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import './App.scss';
-import videoData from './data/video-details.json'
+// import videoData from './data/video-details.json'
 // import nextVideo from './data/videos.json'
 import Header from './components/Header/Header';
 // import MainVideo from './components/MainVideo/MainVideo'
@@ -13,26 +13,28 @@ import HomePage from './pages/HomePage/HomePage';
 
 function App() {
 
-  const [mainVideo, setMainVideo] = useState(videoData[0]);
+  // const [mainVideo, setMainVideo] = useState(videoData[0]);
 
-  function updateMainVideo(clickedid) {
-    const nextMainVideo = videoData.find((video) => video.id === clickedid)
-    setMainVideo(nextMainVideo);
-  }
+  // function updateMainVideo(clickedid) {
+  //   const nextMainVideo = videoData.find((video) => video.id === clickedid)
+  //   setMainVideo(nextMainVideo);
+  // }
 
   return (
     <>
-      
+
       <BrowserRouter>
-      <Header />
+        <Header />
         <Routes>
-          <Route path="/" element = {<HomePage mainVideo={mainVideo} updateMainVideo={updateMainVideo}/>}/>
-          {/* <Route path="/video" element = {}/>
-          <Route path="/video" element = {}/> */}
+          <Route path="/" element={<HomePage />} />
+          <Route path="/videos/:videoId" element = {<HomePage />}/>
+          {/* <Route path="/upload" element = {}/> */}
+
+
         </Routes>
       </BrowserRouter>
-      {/* <MainVideo mainVideo={mainVideo} /> */}
-      {/* <main className='video-information'>
+      {/* <MainVideo mainVideo={mainVideo} />
+      <main className='video-information'>
         <section className='video-information__comments'>
           <VideoDetails mainVideo={mainVideo} />
           <Comments mainVideo={mainVideo} />
