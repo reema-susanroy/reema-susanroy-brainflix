@@ -1,11 +1,10 @@
-import { useParams, useSearchParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import MainVideo from "../../components/MainVideo/MainVideo";
 import VideoDetails from "../../components/VideoDetails/VideoDetails";
 import Comments from "../../components/Comments/Comments";
 import NextVideo from "../../components/NextVideo/NextVideo";
 
-import nextVideo from '../../data/videos.json'
 
 
 import { useEffect, useState } from "react";
@@ -15,7 +14,7 @@ import axios from "axios";
 function HomePage() {
     
     const { videoId } = useParams();
-    console.log({ videoId })
+    // console.log({ videoId })
 
 
     const api_url = "https://unit-3-project-api-0a5620414506.herokuapp.com";
@@ -34,7 +33,7 @@ function HomePage() {
             try {
 
                 const response = await axios.get(`${api_url}/videos?api_key=${api_key}`)
-                console.log(response.data);
+                // console.log(response.data);
                 setNextVideo(response.data);
 
             }
@@ -44,6 +43,7 @@ function HomePage() {
 
         }
         fetchMainVideo();
+        
     }, []);
 
 
@@ -53,7 +53,7 @@ function HomePage() {
             try {
 
                 const response = await axios.get(`${api_url}/videos/${videoId}?api_key=${api_key}`)
-                console.log(response.data);
+                // console.log(response.data);
                 setMainVideo(response.data);
                 setIsLoaded(true);
             }
@@ -70,8 +70,8 @@ function HomePage() {
       }
 
 
-    console.log({mainVideo})
-    console.log({nextVideo})
+    // console.log({mainVideo})
+    // console.log({nextVideo})
 
 
     // console.log(mainVideo.timestamp);
