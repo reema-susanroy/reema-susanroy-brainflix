@@ -4,9 +4,10 @@
 .upload-cont {
     // padding-top: 1rem;
 
-    @include tablet{
+    @include tablet {
         @include setPadding_tablet;
     }
+
     @include desktop {
         @include setPadding_desktop;
         // display: flex;
@@ -14,9 +15,12 @@
         // gap: 1.5rem;
     }
 
-    &__divider{
+    &__divider {
         border-top: 1px solid $divider_color;
-        @include desktop{
+        padding: 1.5rem 0;
+        border-bottom: 1px solid $divider_color;
+
+        @include desktop {
             display: flex;
         }
     }
@@ -25,21 +29,23 @@
 .upload {
     font-family: 'Avenir Next LT Pro-Bold';
     @include setPadding;
+
     // padding-top: 2rem;
-    @include tablet{
+    @include tablet {
         // @include setPadding_tablet;
         padding: 1.5rem;
     }
-    @include desktop{
+
+    @include desktop {
         @include setPadding_desktop;
         padding-top: 2rem;
     }
- 
+
     &__thumbnail {
         @include setPadding();
         // padding-top: 2rem;
 
-        @include tablet{
+        @include tablet {
             padding: 1rem 0 0;
         }
 
@@ -47,6 +53,14 @@
             font-size: 12px;
             color: $secondary_text_color;
             padding-bottom: .5rem;
+
+            @include tablet {
+                font-size: 14px;
+            }
+
+            @include desktop {
+                font-size: 16px;
+            }
         }
 
         &--image-cont {
@@ -76,18 +90,21 @@
 .form {
     @include setPadding();
 }
-.form__upload{
-    @include desktop{
+
+.form__upload {
+    @include desktop {
         flex: 1;
     }
 }
+
 .form-video {
     display: flex;
     flex-direction: column;
-    padding: 1rem;
+    // padding: 1rem;
 
-    @include tablet {
-        border-bottom: 1px solid $divider_color;
+    @include desktop {
+        padding: 1rem;
+        gap: 1.2rem;
     }
 
     &__title {
@@ -99,9 +116,13 @@
         font-weight: 900;
         line-height: 1.5rem;
 
-        @include desktop {
-            padding: 0;
+        @include tablet {
+            font-size: 14px;
+        }
 
+        @include desktop {
+            font-size: 16px;
+            padding: 0;
         }
 
         &-input {
@@ -143,6 +164,7 @@
         display: flex;
         justify-content: flex-start;
         width: 100%;
+        gap: 5rem;
     }
 
     &--publish {
@@ -156,6 +178,7 @@
     }
 
     &--cancel {
+        cursor: pointer;
         border: none;
         height: 2.5rem;
         background-color: $primary_background_color;
@@ -164,8 +187,50 @@
         font-weight: 600;
 
         @include tablet {
-            width: 25%;
+            // width: 10%;
             letter-spacing: 1px;
         }
     }
+}
+
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    text-align: center;
+    position: relative;
+    top: 15rem;
+    left: 18rem;
+
+    &__close {
+        cursor: pointer;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 20px;
+        color: $secondary_text_color;
+    }
+
+}
+
+.modal__title-cont {
+    color: $primary_color_button;
+
+}
+
+button:disabled {
+    cursor: not-allowed;
 }

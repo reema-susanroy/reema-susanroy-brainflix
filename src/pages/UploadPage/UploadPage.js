@@ -8,24 +8,34 @@ function UploadPage() {
 
     const navigate = useNavigate();
     const [uploadForm, setUploadForm] = useState(false);
+    const [buttonStatus, setButtonStatus] = useState(false);
+
 
     const goToHomepage = (event) => {
         event.preventDefault();
         event.target.reset();
         setUploadForm(true);
+        setButtonStatus(true);
 
-        // after 5 seconds, send the user to /contestants
         setTimeout(() => {
+            setUploadForm(false);
+            setButtonStatus(false);
             navigate("/");
-        }, 5000);
+        }, 4000);
     }
 
-    return (
-        <>
-            <div className="" >
+    const closePopup = () => {
+        setUploadForm(false);
+        setTimeout(() => {
+            navigate("/");
+        }, 4000);
+    };
 
-                <h1 className="upload">Upload Video</h1>
-                <div className='upload-cont'>
+    return (
+        <main>
+            <h1 className="upload">Upload Video</h1>
+            <div className='upload-cont'>
+                <form onSubmit={goToHomepage}>
                     <section className='upload-cont__divider'>
                         <article className='upload__thumbnail'>
                             <h3 className='upload__thumbnail--title'>VIDEO THUMBNAIL</h3>
@@ -33,7 +43,7 @@ function UploadPage() {
                                 <img className='upload__thumbnail--image' src={img} alt="video-upload" />
                             </div>
                         </article>
-                        <form onSubmit={goToHomepage} className='form__upload'>
+                        <div className='form__upload'>
                             <section className='form-video'>
                                 <label className='form-video__title'>TITLE YOUR VIDEO
                                     <input className='form-video__title-input' type="text" placeholder='Add a title to your video' />
@@ -42,19 +52,30 @@ function UploadPage() {
                                     <textarea className='form-video__description-input' type="text" rows={4} placeholder='Add a description to your video' />
                                 </label>
                             </section>
-                            <div className='form__button'>
-                                <button className='form__button--publish'>PUBLISH</button>
-                                <button className='form__button--cancel'>CANCEL</button>
-                                {/* <button disabled={uploadForm}>Submit Form</button> */}
-                            </div>
-                        </form>
+                        </div>
                     </section>
-                </div>
-                {uploadForm && (
-                    <div>Successfully submitted form. Taking you to the view contestants page</div>
-                )}
+                    <div className='form__button'>
+                        <button disabled={buttonStatus} className='form__button--publish'>PUBLISH</button>
+                        <button disabled={buttonStatus} className='form__button--cancel'>CANCEL</button>
+                    </div>
+                </form>
             </div>
-        </>
+
+            {uploadForm && (
+                <div className="modal-overlay">
+                    <div className="modal" onClick={(e) => e.stopPropagation()}>
+                        <span className="modal__close" onClick={closePopup}>
+                            &times;
+                        </span>
+                        <section className='modal__title-cont'>
+                            <h2 className='modal__title--title'>Success</h2>
+                            <p className='modal__title'>Uploaded the video. </p>
+                            <p className='modal__title'>Taking you to the home page.</p>
+                        </section>
+                    </div>
+                </div>
+            )}
+        </main>
     )
 
 }
