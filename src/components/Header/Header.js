@@ -16,15 +16,17 @@ function Header() {
                     <div className='navbar__search navbar__logo'>
                         <form className='navbar__search-form'>
                             <label htmlFor='search' />
-                            <input id="search" name='input' placeholder='Search' />
+                            <input className="input" id="search" name='input' placeholder='Search' />
                         </form>
                         <div className='navbar__image-mobile '>
                             <img src={avatar} alt='avatar' />
                         </div>
                     </div>
-                    <div className='navbar__button'>
-                        <button className='navbar__button--upload'>Upload</button>
-                    </div>
+                    <Link to='/upload' className='navbar__button'>
+                        {/* <div className='navbar__button'> */}
+                            <button className='navbar__button--upload'>Upload</button>
+                        {/* </div> */}
+                    </Link>
                     <div className='navbar__image-tablet'>
                         <img src={avatar} alt='avatar' />
                     </div>

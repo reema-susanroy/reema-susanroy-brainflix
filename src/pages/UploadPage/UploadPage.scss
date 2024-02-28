@@ -1,0 +1,171 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variable' as *;
+
+.upload-cont {
+    // padding-top: 1rem;
+
+    @include tablet{
+        @include setPadding_tablet;
+    }
+    @include desktop {
+        @include setPadding_desktop;
+        // display: flex;
+        // flex-direction: row;
+        // gap: 1.5rem;
+    }
+
+    &__divider{
+        border-top: 1px solid $divider_color;
+        @include desktop{
+            display: flex;
+        }
+    }
+}
+
+.upload {
+    font-family: 'Avenir Next LT Pro-Bold';
+    @include setPadding;
+    // padding-top: 2rem;
+    @include tablet{
+        // @include setPadding_tablet;
+        padding: 1.5rem;
+    }
+    @include desktop{
+        @include setPadding_desktop;
+        padding-top: 2rem;
+    }
+ 
+    &__thumbnail {
+        @include setPadding();
+        // padding-top: 2rem;
+
+        @include tablet{
+            padding: 1rem 0 0;
+        }
+
+        &--title {
+            font-size: 12px;
+            color: $secondary_text_color;
+            padding-bottom: .5rem;
+        }
+
+        &--image-cont {
+            // display: flex;
+            // width: 36px;
+            // height: 150px;
+            width: 18rem;
+            height: 10rem;
+            border-radius: 4px;
+            overflow: hidden;
+            object-fit: cover;
+            background-color: $divider_color;
+        }
+
+        &--image {
+            // width: 100%;
+            // height: 100%;
+            width: 20rem;
+            object-fit: cover;
+            object-position: bottom;
+        }
+
+    }
+
+}
+
+.form {
+    @include setPadding();
+}
+.form__upload{
+    @include desktop{
+        flex: 1;
+    }
+}
+.form-video {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+
+    @include tablet {
+        border-bottom: 1px solid $divider_color;
+    }
+
+    &__title {
+        display: flex;
+        flex-direction: column;
+        padding-top: 1rem;
+        color: $secondary_text_color;
+        font-size: 12px;
+        font-weight: 900;
+        line-height: 1.5rem;
+
+        @include desktop {
+            padding: 0;
+
+        }
+
+        &-input {
+            @include form-field();
+            font-size: 14px;
+            padding: .5rem;
+            font-family: 'Avenir Next LT Pro-Regular';
+
+            &:focus {
+                border-color: $primary_color_button;
+            }
+        }
+
+    }
+
+    &__description-input {
+        @include form-field();
+        height: 100%;
+        font-size: 14px;
+        padding: .5rem;
+        font-family: 'Avenir Next LT Pro-Regular';
+
+        &:focus {
+            border-color: $primary_color_button;
+        }
+    }
+
+
+}
+
+.form__button {
+    @include button_container();
+    @include setPadding();
+    gap: 1.5rem;
+    padding-top: 1rem;
+
+    @include tablet {
+        flex-direction: row-reverse;
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+    }
+
+    &--publish {
+        @include button();
+        background-image: url('../../assets/images/icons/publish.svg');
+
+        @include tablet {
+            width: 12rem;
+        }
+
+    }
+
+    &--cancel {
+        border: none;
+        height: 2.5rem;
+        background-color: $primary_background_color;
+        color: $primary_color_button;
+        font-size: 14px;
+        font-weight: 600;
+
+        @include tablet {
+            width: 25%;
+            letter-spacing: 1px;
+        }
+    }
+}

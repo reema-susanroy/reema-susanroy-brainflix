@@ -5,9 +5,12 @@
 .navbar {
     @include setPadding();
     width: 100%;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid $divider_color;
 
     @include tablet {
         @include setPadding_tablet;
+        padding-bottom: 1.5rem;
         display: flex;
         flex-direction: row;
         background-color: $primary_background_color;
@@ -87,30 +90,18 @@
     }
 
     &__button {
-        display: flex;
-        justify-content: center;
+        @include button_container();
+        // display: flex;
+        // justify-content: center;
+        // text-decoration: none;
 
-        @include tablet {
-            width: 13rem;
-        }
+        // @include tablet {
+        //     width: 13rem;
+        // }
 
         &--upload {
-            text-transform: uppercase;
-            cursor: pointer;
-            color: $primary_background_color;
-            background-color: $primary_color_button;
-            border: none;
-            width: 100%;
+            @include button();
             background-image: url('../../assets/images/icons/upload.svg');
-            background-repeat: no-repeat;
-            height: 2.5rem;
-            width: 100%;
-            border-radius: 4px;
-            box-sizing: border-box;
-            background-repeat: no-repeat;
-            background-size: 1.5rem;
-            background-position: (0.5rem 0.5rem);
-            font-size: 14px;
 
             &:hover {
                 background-color: $secondary_color_button;
@@ -119,29 +110,31 @@
     }
 }
 
-input {
+.input {
+    @include form-field();
     background-image: url('../../assets/images/icons/search.svg');
     background-repeat: no-repeat;
-    height: 2.5rem;
-    width: 100%;
-    border-radius: 4px;
-    box-sizing: border-box;
+    font-size: 1rem;
+    // height: 2.5rem;
+    // width: 100%;
+    // border-radius: 4px;
+    // box-sizing: border-box;
     background-repeat: no-repeat;
     padding-left: 2rem;
     background-size: 1.5rem;
     background-position: (0.5rem 0.3rem);
-    font-size: 1rem;
-    border-color: $divider_color;
-    border-style: solid;
-    background-color: $form_background_color;
-    outline: none;
+    // font-size: 1rem;
+    // border-color: $divider_color;
+    // border-style: solid;
+    // background-color: $form_background_color;
+    // outline: none;
 
     &:focus {
         border-color: $primary_color_button;
     }
 }
 
-input::placeholder {
+.input::placeholder {
     padding-left: 0.25rem;
     color: $secondary_color_brainflix;
     font-family: "Avenir Next LT Pro-Regular";
