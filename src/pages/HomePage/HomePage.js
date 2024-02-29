@@ -70,7 +70,7 @@ function HomePage() {
       }
 
 
-    // console.log({mainVideo})
+    console.log({mainVideo})
     // console.log({nextVideo})
 
 

@@ -1,6 +1,7 @@
 import './VideoDetails.scss';
 import viewsIcon from '../../assets/images/icons/views.svg'
 import likesIcon from '../../assets/images/icons/likes.svg'
+import Comments from '../Comments/Comments';
 
 
 function VideoDetails({ mainVideo }) {
@@ -35,6 +36,7 @@ function VideoDetails({ mainVideo }) {
             <div>
                 <p className='video__description'>{description} </p>
             </div>
+            {/* <Comments mainVideo={mainVideo} /> */}
         </>
     )
 }

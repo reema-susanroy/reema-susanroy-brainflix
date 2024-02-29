@@ -1,7 +1,7 @@
 import './CommentDisplay.scss';
 import {TimeFormat} from '../../utils/TimeFormat';
 
-function CommentDisplay({ comment }) {
+function CommentDisplay({ name, timestamp, userComment}) {
 
     return (
         <>
@@ -12,13 +12,13 @@ function CommentDisplay({ comment }) {
                     </div>
                     <div className="comment__user--comment-cont">
                         <div className="comment__user--name-cont">
-                            <p className="comment__user--name">{comment.name}</p>
+                            <p className="comment__user--name">{name}</p>
 
                             {/* Calls a function timeFormat to calculate dynamic timestamp */}
-                            <p className="comment__user--date">{TimeFormat(comment.timestamp)}</p>
+                            <p className="comment__user--date">{TimeFormat(timestamp)}</p>
                         </div>
                         <div className="comment__user--comment-cont">
-                            <p className="comment__user--comment">{comment.comment}</p>
+                            <p className="comment__user--comment">{userComment}</p>
                         </div>
                     </div>
                 </div>
