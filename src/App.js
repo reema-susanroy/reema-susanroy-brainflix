@@ -30,6 +30,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/videos/:videoId" element = {<HomePage />}/>
           <Route path="/upload" element = {<UploadPage />}/>
+          <Route path="*" element = {<></>}/>
 
 
         </Routes>

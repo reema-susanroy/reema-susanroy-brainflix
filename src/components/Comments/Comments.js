@@ -7,7 +7,6 @@ import './Comments.scss';
 import avatar from '../../assets/images/photos/Mohan-muruge.jpg'
 
 function Comments({ mainVideo }) {
-    // const { comments } = mainVideo
     let { id } = mainVideo;
     let filteredObj;
     // let setComment;
@@ -40,6 +39,7 @@ function Comments({ mainVideo }) {
             console.log(respdata);
             let newpost = respdata.data;
             setComment({ ...comments, newpost });
+            getData(id)
         }
         catch (error) {
             console.log("unable to fetch postcomments method" + error);
@@ -47,34 +47,7 @@ function Comments({ mainVideo }) {
 
     }
     const dataArray = Object.values(comments);
-    // useEffect(() => {
-    //     const postComments = async (videoId, data) => {
-    //         try {
-    //             console.log("Entered postComments");
-    //             console.log({ videoId });
-    //             const response = await axios.post(`${api_url}/videos/${videoId}/comments?api_key=${api_key}`, data);
-    //             console.log("important")
-    //             console.log(response.data)
-    //             console.log("comments")
-    //             console.log({ comments })
-    //             // setNewComment(response.data);
-    //             let store = response.data;
-    //             filteredObj = { ...comments, store }
-    //             // setComment({...comments, response.data}); //replace with get call
-    //             setIsLoaded(true);
-    //             console.log("filtered:: ", { filteredObj })
-    //             console.log("inside post" + comments);
-    //             setComment(filteredObj);
-    //             console.log("after api call");
-    //             console.log(response.data);
-    //             return response.data;
-    //         }
-    //         catch (error) {
-    //             console.log("Unable to post comments : ", error)
-    //         }
-    //     }
-    // })
-    
+       
     useEffect(() => {
         getData(id);
     }, [id]);
@@ -99,7 +72,6 @@ function Comments({ mainVideo }) {
         <div className='form__comments-cont'>
             <h3 className='form__comments-title'>{comments.length} Comments</h3>
             <form onSubmit={handlePostComment} className='form__comments'>
-                {/* <form className='form__comments'> */}
                 <div className='form__comments-image'>
                     <section className='form__comments--userImage'>
                         <img src={avatar} alt="avatar" />
@@ -108,8 +80,6 @@ function Comments({ mainVideo }) {
                 <div className=" form__comments--userinput">
                     <section className=" form__comments--input">
                         <label className="form__comments--label">Join the Conversation</label>
-                        {/* <textarea className="form__comments--input-box" placeholder="Add a new comment"
-                            id="userComment" rows="4"></textarea> */}
                         <textarea onChange={handleChangeComment} value={formCommet} className="form__comments--input-box" placeholder="Add a new comment"
                             id="userComment" rows="4"></textarea>
                     </section>
@@ -121,7 +91,6 @@ function Comments({ mainVideo }) {
             <div className="comments">
                 {dataArray.map((comment) => {
                     return (
-                        // <></>)
                         <CommentDisplay key={comment.id} name={comment.name} timestamp={comment.timestamp} userComment={comment.comment} />)
                 }
                 )}
