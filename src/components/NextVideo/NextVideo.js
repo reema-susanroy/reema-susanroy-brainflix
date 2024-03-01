@@ -15,7 +15,6 @@ function NextVideo({ nextVideo, mainVideo }) {
                         <VideoItem
                             key={videos.id}
                             videos={videos}
-                            // updateMainVideo={updateMainVideo}
                         />
                     )
                 })}

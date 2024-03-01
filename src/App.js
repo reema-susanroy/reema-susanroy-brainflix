@@ -14,13 +14,6 @@ import UploadPage from './pages/UploadPage/UploadPage';
 
 function App() {
 
-  // const [mainVideo, setMainVideo] = useState(videoData[0]);
-
-  // function updateMainVideo(clickedid) {
-  //   const nextMainVideo = videoData.find((video) => video.id === clickedid)
-  //   setMainVideo(nextMainVideo);
-  // }
-
   return (
     <>
 
@@ -31,20 +24,8 @@ function App() {
           <Route path="/videos/:videoId" element = {<HomePage />}/>
           <Route path="/upload" element = {<UploadPage />}/>
           <Route path="*" element = {<></>}/>
-
-
         </Routes>
       </BrowserRouter>
-      {/* <MainVideo mainVideo={mainVideo} />
-      <main className='video-information'>
-        <section className='video-information__comments'>
-          <VideoDetails mainVideo={mainVideo} />
-          <Comments mainVideo={mainVideo} />
-        </section>
-        <section className='video-information__next-video'>
-          <NextVideo nextVideo={nextVideo} mainVideo={mainVideo} updateMainVideo={updateMainVideo} />
-        </section>
-      </main> */}
     </>
   );
 }

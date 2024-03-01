@@ -1,8 +1,11 @@
 import './CommentDisplay.scss';
 import {TimeFormat} from '../../utils/TimeFormat';
 
-function CommentDisplay({ name, timestamp, userComment}) {
+function CommentDisplay({ commnetId, name, timestamp, userComment, handleDeleteComment}) {
 
+    const handleClick = () =>{
+        handleDeleteComment(commnetId);
+    }
     return (
         <>
             <div className="comment">
@@ -19,6 +22,9 @@ function CommentDisplay({ name, timestamp, userComment}) {
                         </div>
                         <div className="comment__user--comment-cont">
                             <p className="comment__user--comment">{userComment}</p>
+                        </div>
+                        <div className='comment__button-cont'>
+                            <button onClick={handleClick} className='comment__button'>DELETE</button>
                         </div>
                     </div>
                 </div>

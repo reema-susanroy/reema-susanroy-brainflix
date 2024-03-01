@@ -56,3 +56,13 @@
         color: $secondary_text_color;
     }
 }
+
+.comment__button-cont{
+    display: flex;
+    flex-direction: row-reverse;}
+.comment__button{
+    cursor: pointer;
+    background-color: lightblue;
+    border: none;
+    height: 2rem;
+    width: 6rem;}

@@ -5,8 +5,6 @@ import VideoDetails from "../../components/VideoDetails/VideoDetails";
 import Comments from "../../components/Comments/Comments";
 import NextVideo from "../../components/NextVideo/NextVideo";
 
-
-
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -14,7 +12,7 @@ import axios from "axios";
 function HomePage() {
 
     const { videoId } = useParams();
-    // console.log({ videoId })
+    console.log({ videoId })
 
 
     const api_url = "https://unit-3-project-api-0a5620414506.herokuapp.com";
@@ -31,31 +29,35 @@ function HomePage() {
 
         const fetchMainVideo = async () => {
             try {
+
                 const response = await axios.get(`${api_url}/videos?api_key=${api_key}`)
+                console.log(response.data);
                 setNextVideo(response.data);
+
             }
             catch (error) {
-                setIsLoaded(false);
-                sethasError(true);
                 console.log("Unable to fetch videos : ", error)
             }
+
         }
         fetchMainVideo();
     }, []);
 
 
     useEffect(() => {
+
         const fetchVideoDetails = async (videoId) => {
             try {
+
                 const response = await axios.get(`${api_url}/videos/${videoId}?api_key=${api_key}`)
+                console.log(response.data);
                 setMainVideo(response.data);
                 setIsLoaded(true);
             }
             catch (error) {
-                setIsLoaded(false);
-                sethasError(true);
                 console.log("Unable to fetch videos : ", error)
             }
+
         }
         fetchVideoDetails(videoId || baseVideoId);
     }, [videoId]);
@@ -63,8 +65,7 @@ function HomePage() {
     if (!isLoaded) {
         return <div>Loading...</div>;
     }
-    
-    console.log({mainVideo})
+
     return (
         <>
             {nextVideo && (

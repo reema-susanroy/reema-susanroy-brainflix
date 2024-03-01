@@ -1,50 +1,39 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router';
-
 import CommentDisplay from '../CommentDisplay/CommentDisplay'
 import './Comments.scss';
 import avatar from '../../assets/images/photos/Mohan-muruge.jpg'
 
 function Comments({ mainVideo }) {
     let { id } = mainVideo;
-    let filteredObj;
-    // let setComment;
 
     const [formCommet, setFormCommet] = useState();
     const [comments, setComment] = useState(mainVideo.comments);
-    const [newComment, setNewComment] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
 
 
     const handleChangeComment = (event) => {
-        // console.log(event.target.value);
         setFormCommet(event.target.value);
     };
 
-    // console.log({formCommet})
     const api_url = "https://unit-3-project-api-0a5620414506.herokuapp.com";
     const api_key = "485e90e7-2da9-42b1-9f2e-b89898b94889";
 
     async function handlePostComment(event) {
         event.preventDefault();
         try {
-            console.log({ id })
             let data = {
                 "name": "random user",
                 "comment": formCommet
-            }
-            // const respdata = await postComments(id, data);
+            };
             const respdata = await axios.post(`${api_url}/videos/${id}/comments?api_key=${api_key}`, data);
-            console.log(respdata);
             let newpost = respdata.data;
             setComment({ ...comments, newpost });
-            getData(id)
+            getData(id);
         }
         catch (error) {
             console.log("unable to fetch postcomments method" + error);
         }
-
     }
     const dataArray = Object.values(comments);
        
@@ -52,19 +41,24 @@ function Comments({ mainVideo }) {
         getData(id);
     }, [id]);
 
-    const getData = async (videoId) => {
+    let getData = async (videoId) => {
         try {
-            console.log("Entered get call");
-            console.log({ videoId });
             const response = await axios.get(`${api_url}/videos/${videoId}/?api_key=${api_key}`);
-            console.log("after api call");
-
-            console.log(response.data.comments);
             setComment(response.data.comments);
             return response.data.comments;
         }
         catch (error) {
             console.log("Unable to post comments : ", error)
+        }
+    }
+
+    const handleDeleteComment = async (commentId) =>{
+        try {
+            await axios.delete(`${api_url}/videos/${id}/comments/${commentId}?api_key=${api_key}`);
+            getData(id)
+        }
+        catch (error) {
+            console.log("unable to fetch postcomments method" + error);
         }
     }
 
@@ -91,13 +85,12 @@ function Comments({ mainVideo }) {
             <div className="comments">
                 {dataArray.map((comment) => {
                     return (
-                        <CommentDisplay key={comment.id} name={comment.name} timestamp={comment.timestamp} userComment={comment.comment} />)
+                        <CommentDisplay key={comment.id} commnetId={comment.id} name={comment.name} timestamp={comment.timestamp} userComment={comment.comment} handleDeleteComment={handleDeleteComment}/>)
                 }
                 )}
             </div>
         </div>
     )
-
 }
 
 export default Comments;
