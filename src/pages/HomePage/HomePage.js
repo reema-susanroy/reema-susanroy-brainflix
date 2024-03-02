@@ -37,6 +37,7 @@ function HomePage() {
             }
             catch (error) {
                 console.log("Unable to fetch videos : ", error)
+                sethasError(true);
             }
 
         }

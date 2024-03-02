@@ -1,34 +1,33 @@
 import './UploadPage.scss'
-
 import { useNavigate } from "react-router";
 import { useState } from "react";
 import img from '../../assets/images/photos/Upload-video-preview.jpg'
 
 function UploadPage() {
-
     const navigate = useNavigate();
     const [uploadForm, setUploadForm] = useState(false);
     const [buttonStatus, setButtonStatus] = useState(false);
 
-
+    const formSubmit = () => {
+        setUploadForm(true);
+    }
+    const formCancel = () => {
+        console.log("1")
+        setUploadForm(false);
+    }
     const goToHomepage = (event) => {
+        console.log("2")
         event.preventDefault();
         event.target.reset();
-        setUploadForm(true);
-        setButtonStatus(true);
-
-        setTimeout(() => {
-            setUploadForm(false);
+        if (uploadForm) 
+            setButtonStatus(true);
+        else
+        {console.log("3")
             setButtonStatus(false);
-            navigate("/");
-        }, 4000);
     }
-
+    }
     const closePopup = () => {
-        setUploadForm(false);
-        setTimeout(() => {
-            navigate("/");
-        }, 4000);
+        navigate("/");
     };
 
     return (
@@ -55,8 +54,8 @@ function UploadPage() {
                         </div>
                     </section>
                     <div className='form__button'>
-                        <button disabled={buttonStatus} className='form__button--publish'>PUBLISH</button>
-                        <button disabled={buttonStatus} className='form__button--cancel'>CANCEL</button>
+                        <button onClick={formSubmit} disabled={buttonStatus} className='form__button--publish'>PUBLISH</button>
+                        <button onClick={formCancel} disabled={buttonStatus} className='form__button--cancel'>CANCEL</button>
                     </div>
                 </form>
             </div>
@@ -77,7 +76,6 @@ function UploadPage() {
             )}
         </main>
     )
-
 }
 
 export default UploadPage;

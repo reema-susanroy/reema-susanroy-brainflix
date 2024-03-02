@@ -1,0 +1,14 @@
+@use '../../styles/partials/mixins' as *;
+
+.notfound {
+    @include setPadding;
+
+    @include tablet {
+        @include setPadding_tablet;
+    }
+
+    @include desktop {
+        @include setPadding_desktop;
+    }
+
+}

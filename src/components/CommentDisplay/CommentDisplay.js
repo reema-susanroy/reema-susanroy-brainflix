@@ -23,8 +23,8 @@ function CommentDisplay({ commnetId, name, timestamp, userComment, handleDeleteC
                         <div className="comment__user--comment-cont">
                             <p className="comment__user--comment">{userComment}</p>
                         </div>
-                        <div className='comment__button-cont'>
-                            <button onClick={handleClick} className='comment__button'>DELETE</button>
+                        <div className='comment__user--button-cont'>
+                            <button onClick={handleClick} className='comment__user--button'>DELETE</button>
                         </div>
                     </div>
                 </div>

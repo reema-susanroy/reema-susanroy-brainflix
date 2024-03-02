@@ -35,8 +35,9 @@ function Comments({ mainVideo }) {
             console.log("unable to fetch postcomments method" + error);
         }
     }
-    const dataArray = Object.values(comments);
-       
+    console.log({comments});
+    // const dataArray = Object.values(comments);
+    // console.log({dataArray});
     useEffect(() => {
         getData(id);
     }, [id]);
@@ -83,7 +84,7 @@ function Comments({ mainVideo }) {
                 </div>
             </form>
             <div className="comments">
-                {dataArray.map((comment) => {
+                {comments.map((comment) => {
                     return (
                         <CommentDisplay key={comment.id} commnetId={comment.id} name={comment.name} timestamp={comment.timestamp} userComment={comment.comment} handleDeleteComment={handleDeleteComment}/>)
                 }

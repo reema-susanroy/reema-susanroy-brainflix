@@ -209,11 +209,22 @@
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
-    width: 400px;
+    width: 60%;
+    // width: 100%;
     text-align: center;
     position: relative;
     top: 15rem;
-    left: 18rem;
+    // left: 3.5rem;
+    left: 4rem;
+    font-size: 12px;
+
+    @include tablet {
+        left: 10rem;
+    }
+    @include desktop{
+        left: 15rem;
+        font-size: 1rem;
+    }
 
     &__close {
         cursor: pointer;
@@ -222,12 +233,20 @@
         right: 10px;
         font-size: 20px;
         color: $secondary_text_color;
+        @include desktop{
+            right: 20px;
+            font-size: 1rem;
+        }
     }
 
-}
+    &__title-cont {
+        color: $primary_color_button;
+    }
 
-.modal__title-cont {
-    color: $primary_color_button;
+    &__title {
+        color: $primary_color_brainflix;
+    }
+
 
 }
 

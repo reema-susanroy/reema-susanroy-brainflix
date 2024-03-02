@@ -55,14 +55,21 @@
         width: 100vw;
         color: $secondary_text_color;
     }
-}
 
-.comment__button-cont{
-    display: flex;
-    flex-direction: row-reverse;}
-.comment__button{
-    cursor: pointer;
-    background-color: lightblue;
-    border: none;
-    height: 2rem;
-    width: 6rem;}
+    &--button-cont{
+        display: flex;
+        flex-direction: row-reverse;
+    }
+    &--button{
+        cursor: pointer;
+        color: $primary_background_color;
+        background-color: $primary_color_button;
+        border: none;
+        height: 2rem;
+        width: 6rem;
+
+        &:hover{
+            background-color: $secondary_color_button;
+        }
+    }
+}
