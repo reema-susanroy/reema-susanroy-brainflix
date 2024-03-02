@@ -4,13 +4,14 @@ import CommentDisplay from '../CommentDisplay/CommentDisplay'
 import './Comments.scss';
 import avatar from '../../assets/images/photos/Mohan-muruge.jpg'
 
+// Component to Get, Post and Delete comments 
+// current video or the default video object containing entire video details is passed from the HomePage component 
 function Comments({ mainVideo }) {
     let { id } = mainVideo;
 
     const [formCommet, setFormCommet] = useState();
     const [comments, setComment] = useState(mainVideo.comments);
-    const [isLoaded, setIsLoaded] = useState(false);
-
+    // const [isLoaded, setIsLoaded] = useState(false);
 
     const handleChangeComment = (event) => {
         setFormCommet(event.target.value);
@@ -19,25 +20,26 @@ function Comments({ mainVideo }) {
     const api_url = "https://unit-3-project-api-0a5620414506.herokuapp.com";
     const api_key = "485e90e7-2da9-42b1-9f2e-b89898b94889";
 
-    async function handlePostComment(event) {
+    const handlePostComment= async (event) => {
         event.preventDefault();
         try {
             let data = {
-                "name": "random user",
+                "name": "Mohan Murugan",
                 "comment": formCommet
             };
             const respdata = await axios.post(`${api_url}/videos/${id}/comments?api_key=${api_key}`, data);
             let newpost = respdata.data;
             setComment({ ...comments, newpost });
+            setFormCommet("");
             getData(id);
         }
         catch (error) {
-            console.log("unable to fetch postcomments method" + error);
+            console.log("Unable to fetch post the comment :" + error);
         }
     }
     console.log({comments});
     // const dataArray = Object.values(comments);
-    // console.log({dataArray});
+
     useEffect(() => {
         getData(id);
     }, [id]);
@@ -49,7 +51,7 @@ function Comments({ mainVideo }) {
             return response.data.comments;
         }
         catch (error) {
-            console.log("Unable to post comments : ", error)
+            console.log("Unable to Get the updated comments : ", error)
         }
     }
 
@@ -59,7 +61,7 @@ function Comments({ mainVideo }) {
             getData(id)
         }
         catch (error) {
-            console.log("unable to fetch postcomments method" + error);
+            console.log("Unable to Delete comment : " + error);
         }
     }
 
@@ -84,7 +86,7 @@ function Comments({ mainVideo }) {
                 </div>
             </form>
             <div className="comments">
-                {comments.map((comment) => {
+                {Object.values(comments).map((comment) => {
                     return (
                         <CommentDisplay key={comment.id} commnetId={comment.id} name={comment.name} timestamp={comment.timestamp} userComment={comment.comment} handleDeleteComment={handleDeleteComment}/>)
                 }

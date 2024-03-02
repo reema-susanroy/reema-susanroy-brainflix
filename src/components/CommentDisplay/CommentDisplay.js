@@ -1,6 +1,7 @@
 import './CommentDisplay.scss';
 import {TimeFormat} from '../../utils/TimeFormat';
 
+//Component to display comments on UI based on props passed from Comments component
 function CommentDisplay({ commnetId, name, timestamp, userComment, handleDeleteComment}) {
 
     const handleClick = () =>{

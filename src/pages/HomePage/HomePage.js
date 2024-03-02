@@ -1,19 +1,17 @@
 import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 import MainVideo from "../../components/MainVideo/MainVideo";
 import VideoDetails from "../../components/VideoDetails/VideoDetails";
 import Comments from "../../components/Comments/Comments";
 import NextVideo from "../../components/NextVideo/NextVideo";
-
-import { useEffect, useState } from "react";
-import axios from "axios";
-
+import Loading from "../LoadingPage/LoadingPage";
+import NotFound from "../NotFound/NotFound";
 
 function HomePage() {
 
     const { videoId } = useParams();
-    console.log({ videoId })
-
 
     const api_url = "https://unit-3-project-api-0a5620414506.herokuapp.com";
     const api_key = "485e90e7-2da9-42b1-9f2e-b89898b94889";
@@ -33,30 +31,25 @@ function HomePage() {
                 const response = await axios.get(`${api_url}/videos?api_key=${api_key}`)
                 console.log(response.data);
                 setNextVideo(response.data);
-
             }
             catch (error) {
-                console.log("Unable to fetch videos : ", error)
+                console.log("Unable to fetch the videos list : ", error)
                 sethasError(true);
             }
-
         }
         fetchMainVideo();
     }, []);
-
 
     useEffect(() => {
 
         const fetchVideoDetails = async (videoId) => {
             try {
-
                 const response = await axios.get(`${api_url}/videos/${videoId}?api_key=${api_key}`)
-                console.log(response.data);
                 setMainVideo(response.data);
                 setIsLoaded(true);
             }
             catch (error) {
-                console.log("Unable to fetch videos : ", error)
+                console.log(`Unable to fetch video details of ${videoId} video : `, error)
             }
 
         }
@@ -64,7 +57,10 @@ function HomePage() {
     }, [videoId]);
 
     if (!isLoaded) {
-        return <div>Loading...</div>;
+        return <Loading />;
+    }
+    if (hasError) {
+        return <NotFound />; 
     }
 
     return (

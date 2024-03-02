@@ -6,7 +6,7 @@ import img from '../../assets/images/photos/Upload-video-preview.jpg'
 function UploadPage() {
     const navigate = useNavigate();
     const [uploadForm, setUploadForm] = useState(false);
-    const [buttonStatus, setButtonStatus] = useState(false);
+    // const [buttonStatus, setButtonStatus] = useState(false);
 
     const formSubmit = () => {
         setUploadForm(true);
@@ -19,12 +19,12 @@ function UploadPage() {
         console.log("2")
         event.preventDefault();
         event.target.reset();
-        if (uploadForm) 
-            setButtonStatus(true);
-        else
-        {console.log("3")
-            setButtonStatus(false);
-    }
+    //     if (uploadForm) 
+    //         setButtonStatus(true);
+    //     else
+    //     {console.log("3")
+    //         setButtonStatus(false);
+    // }
     }
     const closePopup = () => {
         navigate("/");
@@ -54,8 +54,8 @@ function UploadPage() {
                         </div>
                     </section>
                     <div className='form__button'>
-                        <button onClick={formSubmit} disabled={buttonStatus} className='form__button--publish'>PUBLISH</button>
-                        <button onClick={formCancel} disabled={buttonStatus} className='form__button--cancel'>CANCEL</button>
+                        <button onClick={formSubmit} className='form__button--publish'>PUBLISH</button>
+                        <button onClick={formCancel} className='form__button--cancel'>CANCEL</button>
                     </div>
                 </form>
             </div>
