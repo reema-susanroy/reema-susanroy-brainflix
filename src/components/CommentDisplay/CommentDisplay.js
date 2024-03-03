@@ -17,7 +17,6 @@ function CommentDisplay({ commnetId, name, timestamp, userComment, handleDeleteC
                     <div className="comment__user--comment-cont">
                         <div className="comment__user--name-cont">
                             <p className="comment__user--name">{name}</p>
-
                             {/* Calls a function timeFormat to calculate dynamic timestamp */}
                             <p className="comment__user--date">{TimeFormat(timestamp)}</p>
                         </div>

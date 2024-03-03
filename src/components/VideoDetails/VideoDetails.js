@@ -1,16 +1,19 @@
 import './VideoDetails.scss';
 import viewsIcon from '../../assets/images/icons/views.svg'
 import likesIcon from '../../assets/images/icons/likes.svg'
+import {TimeFormat} from '../../utils/TimeFormat';
 
+// Component to display the video details based on the video object passed as a prop from the Video component
+// Props are destructured and accessed in this component 
 function VideoDetails({ mainVideo }) {
     const { channel, timestamp, views, likes, description } = mainVideo;
 
-    //convert timestamp to mm-dd-yyyy format
+    /*convert timestamp to mm-dd-yyyy format
     const date = new Date(timestamp)
     const utcString= date.toISOString();
     const month = new Date(utcString).getUTCMonth() + 1;
     const dateValue = new Date(utcString).getUTCDate();
-    const year = new Date(utcString).getUTCFullYear();
+    const year = new Date(utcString).getUTCFullYear();*/
 
     return (
         <>
@@ -18,7 +21,8 @@ function VideoDetails({ mainVideo }) {
             <div className='video__container'>
                 <div className='video__data'>
                     <p className='video__data--channel'>By {channel}</p>
-                    <p className='video__data--time'>{`${month}/${dateValue}/${year}`}</p>
+                    <p className='video__data--time'>{TimeFormat(timestamp)}</p>
+                    {/* <p className='video__data--time'>{`${month}/${dateValue}/${year}`}</p> */}
                 </div>
                 <div className='video__social'>
                     <div className='video__social--icons'>

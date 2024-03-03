@@ -1,21 +1,18 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import axios from "axios";
 
 import MainVideo from "../../components/MainVideo/MainVideo";
 import VideoDetails from "../../components/VideoDetails/VideoDetails";
 import Comments from "../../components/Comments/Comments";
 import NextVideo from "../../components/NextVideo/NextVideo";
 import Loading from "../LoadingPage/LoadingPage";
-import NotFound from "../NotFound/NotFound";
+import ErrorPage from "../ErrorPage/ErrorPage";
 
+import { getVideoList, getVideoDetais } from "../../utils/API";
+
+//Component to fetch videolist and video description for the selected/default video from the API
 function HomePage() {
-
     const { videoId } = useParams();
-
-    const api_url = "https://unit-3-project-api-0a5620414506.herokuapp.com";
-    const api_key = "485e90e7-2da9-42b1-9f2e-b89898b94889";
-
     const baseVideoId = "84e96018-4022-434e-80bf-000ce4cd12b8";
 
     const [mainVideo, setMainVideo] = useState([]);
@@ -24,12 +21,9 @@ function HomePage() {
     const [hasError, sethasError] = useState(false);
 
     useEffect(() => {
-
         const fetchMainVideo = async () => {
             try {
-
-                const response = await axios.get(`${api_url}/videos?api_key=${api_key}`)
-                console.log(response.data);
+                const response = await getVideoList();
                 setNextVideo(response.data);
             }
             catch (error) {
@@ -41,17 +35,15 @@ function HomePage() {
     }, []);
 
     useEffect(() => {
-
         const fetchVideoDetails = async (videoId) => {
             try {
-                const response = await axios.get(`${api_url}/videos/${videoId}?api_key=${api_key}`)
+                const response = await getVideoDetais(videoId);
                 setMainVideo(response.data);
                 setIsLoaded(true);
             }
             catch (error) {
                 console.log(`Unable to fetch video details of ${videoId} video : `, error)
             }
-
         }
         fetchVideoDetails(videoId || baseVideoId);
     }, [videoId]);
@@ -60,7 +52,7 @@ function HomePage() {
         return <Loading />;
     }
     if (hasError) {
-        return <NotFound />; 
+        return <ErrorPage />; 
     }
 
     return (

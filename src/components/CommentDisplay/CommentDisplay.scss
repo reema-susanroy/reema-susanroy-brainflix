@@ -33,7 +33,7 @@
         line-height: 20px;
         font-size: 13px;
 
-        @include tablet{
+        @include tablet {
             font-size: 15px;
         }
     }
@@ -56,19 +56,27 @@
         color: $secondary_text_color;
     }
 
-    &--button-cont{
+    &--button-cont {
         display: flex;
         flex-direction: row-reverse;
     }
-    &--button{
+
+    &--button {
         cursor: pointer;
         color: $primary_background_color;
         background-color: $primary_color_button;
         border: none;
-        height: 2rem;
-        width: 6rem;
+        border-radius: 4px;
+        height: 1.8rem;
+        width: 4.5rem;
+        font-size: 12px;
 
-        &:hover{
+        @include tablet {
+            height: 2rem;
+            width: 6rem;
+        }
+
+        &:hover {
             background-color: $secondary_color_button;
         }
     }

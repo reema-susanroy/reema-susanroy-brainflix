@@ -209,45 +209,50 @@
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
-    width: 60%;
-    // width: 100%;
+    width: 80%;
     text-align: center;
     position: relative;
     top: 15rem;
-    // left: 3.5rem;
-    left: 4rem;
+    margin: 0 auto;
     font-size: 12px;
 
     @include tablet {
-        left: 10rem;
-    }
-    @include desktop{
-        left: 15rem;
         font-size: 1rem;
-    }
-
-    &__close {
-        cursor: pointer;
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        font-size: 20px;
-        color: $secondary_text_color;
-        @include desktop{
-            right: 20px;
-            font-size: 1rem;
-        }
     }
 
     &__title-cont {
         color: $primary_color_button;
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    &__title--title {
+        font-size: 18px;
     }
 
     &__title {
         color: $primary_color_brainflix;
+
+        @include tablet {
+            font-size: 16px;
+        }
     }
 
+    &__button {
+        align-self: flex-end;
+        width: 2rem;
+        height: 2rem;
+        border: none;
+        background-color: $primary_background_color;
+        color: $primary_color_button;
+        font-weight: bolder;
 
+        @include tablet {
+            width: 3rem;
+            height: 2rem;
+        }
+    }
 }
 
 button:disabled {

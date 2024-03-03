@@ -3,29 +3,24 @@ import { useNavigate } from "react-router";
 import { useState } from "react";
 import img from '../../assets/images/photos/Upload-video-preview.jpg'
 
+//A page to upload the video and navigates to homepage when clicked publish button and clears the form data
 function UploadPage() {
     const navigate = useNavigate();
     const [uploadForm, setUploadForm] = useState(false);
-    // const [buttonStatus, setButtonStatus] = useState(false);
 
     const formSubmit = () => {
         setUploadForm(true);
     }
+
     const formCancel = () => {
-        console.log("1")
         setUploadForm(false);
     }
+
     const goToHomepage = (event) => {
-        console.log("2")
         event.preventDefault();
         event.target.reset();
-    //     if (uploadForm) 
-    //         setButtonStatus(true);
-    //     else
-    //     {console.log("3")
-    //         setButtonStatus(false);
-    // }
     }
+
     const closePopup = () => {
         navigate("/");
     };
@@ -62,14 +57,11 @@ function UploadPage() {
 
             {uploadForm && (
                 <div className="modal-overlay">
-                    <div className="modal" onClick={(e) => e.stopPropagation()}>
-                        <span className="modal__close" onClick={closePopup}>
-                            &times;
-                        </span>
+                    <div className="modal">
                         <section className='modal__title-cont'>
                             <h2 className='modal__title--title'>Success</h2>
-                            <p className='modal__title'>Uploaded the video. </p>
-                            <p className='modal__title'>Taking you to the home page.</p>
+                            <p className='modal__title'>Your video was successfully published!</p>
+                            <button onClick= {closePopup} className='modal__button'>OK</button>
                         </section>
                     </div>
                 </div>
