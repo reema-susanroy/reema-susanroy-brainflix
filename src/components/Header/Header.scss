@@ -58,9 +58,17 @@
         align-items: center;
         gap: 1rem;
         padding-bottom: 1rem;
+        justify-content: space-between;
 
         @include tablet {
             padding-bottom: 0;
+        }
+    }
+    &__search-form{
+        width: 90%;
+
+        @include tablet{
+            width: 100%;
         }
     }
 
