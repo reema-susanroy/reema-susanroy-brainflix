@@ -43,7 +43,7 @@ function Comments({ mainVideo }) {
         else {
             try {
                 let data = {
-                    "name": "Mohan Murugan",
+                    "name": "Mohan Muruge",
                     "comment": formCommet
                 };
                 const respdata = await postComments(id, data);

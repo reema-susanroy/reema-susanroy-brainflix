@@ -8,12 +8,11 @@ import NextVideo from "../../components/NextVideo/NextVideo";
 import Loading from "../LoadingPage/LoadingPage";
 import ErrorPage from "../ErrorPage/ErrorPage";
 
-import { getVideoList, getVideoDetais } from "../../utils/API";
+import { baseVideoId, getVideoList, getVideoDetais } from "../../utils/API";
 
 //Component to fetch videolist and video description for the selected/default video from the API
 function HomePage() {
     const { videoId } = useParams();
-    const baseVideoId = "84e96018-4022-434e-80bf-000ce4cd12b8";
 
     const [mainVideo, setMainVideo] = useState([]);
     const [nextVideo, setNextVideo] = useState([]);
@@ -48,11 +47,12 @@ function HomePage() {
         fetchVideoDetails(videoId || baseVideoId);
     }, [videoId]);
 
+
     if (!isLoaded) {
         return <Loading />;
     }
     if (hasError) {
-        return <ErrorPage />; 
+        return <ErrorPage />;
     }
 
     return (

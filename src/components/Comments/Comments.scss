@@ -138,6 +138,12 @@
 }
 
 .errormessage {
-    padding-left: 5rem;
+    padding-left: 3rem;
     color: $form_error_color;
+    @include tablet{
+        padding-left: 3.5rem;
+    }
+    @include desktop{
+        padding-left: 5rem;
+    }
 }
