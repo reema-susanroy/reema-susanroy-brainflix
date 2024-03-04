@@ -23,9 +23,7 @@ function Header() {
                         </div>
                     </div>
                     <Link to='/upload' className='navbar__button'>
-                        {/* <div className='navbar__button'> */}
                             <button className='navbar__button--upload'>Upload</button>
-                        {/* </div> */}
                     </Link>
                     <div className='navbar__image-tablet'>
                         <img src={avatar} alt='avatar' />

@@ -3,12 +3,9 @@ import './VideoItem.scss'
 
 function VideoItem({ videos }) {
 
-    const handleClick = () => {
-        // updateMainVideo(videos.id);
-    }
     return (
         <article className='video--container'>
-            <li onClick={handleClick} key={videos.id} >
+            <li key={videos.id} >
                 <Link to={`/videos/${videos.id}`} className="video">
                     <div className="video__image">
                         <img className="video__image--img" src={videos.image} alt={videos.name} />

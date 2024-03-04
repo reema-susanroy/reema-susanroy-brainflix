@@ -1,6 +1,6 @@
 import axios from "axios";
 
-//This file conatins details related to API.
+//This file conatins calls related to API.
 export const api_url = "https://unit-3-project-api-0a5620414506.herokuapp.com";
 export const api_key = "485e90e7-2da9-42b1-9f2e-b89898b94889";
 
@@ -25,7 +25,6 @@ export const getVideoDetais = async (videoId) => {
 }
 
 export const postComments = async (id, data) => {
-    console.log("Did i enter ?")
     try {
         const response = await axios.post(`${api_url}/videos/${id}/comments?api_key=${api_key}`, data);
         return response;
