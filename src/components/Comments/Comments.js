@@ -4,7 +4,7 @@ import CommentDisplay from '../CommentDisplay/CommentDisplay'
 import './Comments.scss';
 import avatar from '../../assets/images/photos/Mohan-muruge.jpg'
 
-import { api_url, api_key, postComments, getVideoDetais } from "../../utils/API";
+import { api_url, api_key, postComments, getVideoDetails } from "../../utils/API";
 
 // Component to Get, Post and Delete comments on API
 // current video or the default video object containing entire video details is passed as props from the HomePage component 
@@ -62,7 +62,7 @@ function Comments({ mainVideo }) {
     //to get video details from the API
     const getData = async (videoId) => {
         try {
-            const response = await getVideoDetais(videoId);
+            const response = await getVideoDetails(videoId);
             setComment(response.data.comments);
             setCommentCount(response.data.comments.length);
 

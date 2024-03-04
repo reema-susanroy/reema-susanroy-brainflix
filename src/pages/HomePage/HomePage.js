@@ -8,12 +8,11 @@ import NextVideo from "../../components/NextVideo/NextVideo";
 import Loading from "../LoadingPage/LoadingPage";
 import ErrorPage from "../ErrorPage/ErrorPage";
 
-import { baseVideoId, getVideoList, getVideoDetais } from "../../utils/API";
+import {baseVideoId, getVideoList, getVideoDetails } from "../../utils/API";
 
 //Component to fetch videolist and video description for the selected/default video from the API
 function HomePage() {
     const { videoId } = useParams();
-
     const [mainVideo, setMainVideo] = useState([]);
     const [nextVideo, setNextVideo] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -34,9 +33,9 @@ function HomePage() {
     }, []);
 
     useEffect(() => {
-        const fetchVideoDetails = async (videoId) => {
+          const fetchVideoDetails = async (videoId) => {
             try {
-                const response = await getVideoDetais(videoId);
+                const response = await getVideoDetails(videoId);
                 setMainVideo(response.data);
                 setIsLoaded(true);
             }
@@ -44,9 +43,8 @@ function HomePage() {
                 console.log(`Unable to fetch video details of ${videoId} video : `, error)
             }
         }
-        fetchVideoDetails(videoId || baseVideoId);
+        fetchVideoDetails(videoId || baseVideoId);   
     }, [videoId]);
-
 
     if (!isLoaded) {
         return <Loading />;

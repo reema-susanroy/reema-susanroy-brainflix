@@ -3,14 +3,11 @@ import axios from "axios";
 //This file conatins calls related to API.
 export const api_url = "https://unit-3-project-api-0a5620414506.herokuapp.com";
 export const api_key = "485e90e7-2da9-42b1-9f2e-b89898b94889";
-// export let  baseVideoId; 
-export const baseVideoId ='84e96018-4022-434e-80bf-000ce4cd12b8';
-
+export const baseVideoId = '84e96018-4022-434e-80bf-000ce4cd12b8';
 
 export const getVideoList = async () => {
     try {
         const response = await axios.get(`${api_url}/videos?api_key=${api_key}`);
-        // baseVideoId= response.data[0].id; //not loading data when hard refresh.
         return response;
     }
     catch (error) {
@@ -18,7 +15,7 @@ export const getVideoList = async () => {
     }
 }
 
-export const getVideoDetais = async (videoId) => {
+export const getVideoDetails = async (videoId) => {
     try {
         const response = await axios.get(`${api_url}/videos/${videoId}?api_key=${api_key}`);
         return response;
