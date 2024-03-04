@@ -148,7 +148,9 @@
         @include tablet {
             width: 12rem;
         }
-
+        &:hover{
+            background-color: $secondary_color_button;
+        }
     }
 
     &--cancel {
@@ -162,6 +164,9 @@
 
         @include tablet {
             letter-spacing: 1px;
+        }
+        &:hover{
+            color: $secondary_color_button;
         }
     }
 }
