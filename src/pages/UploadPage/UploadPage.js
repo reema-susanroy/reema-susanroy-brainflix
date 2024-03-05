@@ -1,12 +1,24 @@
 import './UploadPage.scss'
 import { useNavigate } from "react-router";
 import { useState } from "react";
+import axios from 'axios';
 import img from '../../assets/images/photos/Upload-video-preview.jpg'
 
 //A page to upload the video and navigates to homepage when clicked publish button and clears the form data
 function UploadPage() {
     const navigate = useNavigate();
     const [uploadForm, setUploadForm] = useState(false);
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
+
+
+    const handleChangeTitle=(event)=>{
+        setTitle(event.target.value)
+    }
+
+    const handleChangeDescription=(event)=>{
+        setDescription(event.target.value)
+    }
 
     const formSubmit = () => {
         setUploadForm(true);
@@ -16,9 +28,23 @@ function UploadPage() {
         setUploadForm(false);
     }
 
-    const goToHomepage = (event) => {
+    const goToHomepage = async (event) => {
         event.preventDefault();
         event.target.reset();
+        if(uploadForm){
+            let data ={
+                title: title,
+                description : description,
+            }
+            try{
+                const postVideo = await axios.post('http://localhost:8080/videos', data);
+                console.log(postVideo)
+            }   
+            catch(error){
+                console.log("Unable to post the video : "+error);
+            }
+        }
+
     }
 
     const closePopup = () => {
@@ -40,10 +66,10 @@ function UploadPage() {
                         <div className='form__upload'>
                             <section className='form-video'>
                                 <label className='form-video__title'>TITLE YOUR VIDEO
-                                    <input className='form-video__title-input' type="text" placeholder='Add a title to your video' />
+                                    <input onChange={handleChangeTitle} className='form-video__title-input' type="text" placeholder='Add a title to your video' />
                                 </label>
                                 <label className='form-video__title'>ADD A VIDEO DESCRIPTION
-                                    <textarea className='form-video__description-input' type="text" rows={4} placeholder='Add a description to your video' />
+                                    <textarea onChange={handleChangeDescription} className='form-video__description-input' type="text" rows={4} placeholder='Add a description to your video' />
                                 </label>
                             </section>
                         </div>

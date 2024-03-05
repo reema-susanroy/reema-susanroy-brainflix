@@ -2,7 +2,6 @@ import './MainVideo.scss';
 
 //Component to display the video image on UI. Retrieve the image from the video object passed as props.
 function MainVideo({ mainVideo }){
-    
     return(
         <div className="video__player">
 
