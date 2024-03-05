@@ -8,7 +8,7 @@ function VideoItem({ videos }) {
             <li key={videos.id} >
                 <Link to={`/videos/${videos.id}`} className="video">
                     <div className="video__image">
-                        <img className="video__image--img" src={videos.image} alt={videos.name} />
+                        <img className="video__image--img" src={`http://localhost:8080/${videos.image}`} alt={videos.name} />
                     </div>
                     <div className='video__details'>
                         <p className='video__details--title'>{videos.title} </p>

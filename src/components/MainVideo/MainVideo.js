@@ -8,7 +8,7 @@ function MainVideo({ mainVideo }){
 
             {/* poster attribute displays the image as video placeholder.
             controls attribute is to add video controls which is not for this sprint */}
-            <video className='video__player--image' controls poster={mainVideo.image} >
+            <video className='video__player--image' controls poster={`http://localhost:8080/${mainVideo.image}`} >
             </video>
         </div>
     )

@@ -7,7 +7,8 @@ export const baseVideoId = '84e96018-4022-434e-80bf-000ce4cd12b8';
 
 export const getVideoList = async () => {
     try {
-        const response = await axios.get(`${api_url}/videos?api_key=${api_key}`);
+        const response = await axios.get('http://localhost:8080/videos')
+        //axios.get(`${api_url}/videos?api_key=${api_key}`);
         return response;
     }
     catch (error) {
@@ -17,7 +18,7 @@ export const getVideoList = async () => {
 
 export const getVideoDetails = async (videoId) => {
     try {
-        const response = await axios.get(`${api_url}/videos/${videoId}?api_key=${api_key}`);
+        const response = await axios.get(`http://localhost:8080/videos/${videoId}`);
         return response;
     }
     catch (error) {
