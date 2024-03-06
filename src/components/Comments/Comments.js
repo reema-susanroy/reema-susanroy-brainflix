@@ -76,7 +76,7 @@ function Comments({ mainVideo }) {
     //to delete comment from API
     const handleDeleteComment = async (commentId) => {
         try {
-            await axios.delete(`${api_url}/videos/${id}/comments/${commentId}?api_key=${api_key}`);
+            await axios.delete(`http://localhost:8080/videos/${id}/comments/${commentId}`);
             getData(id)
         }
         catch (error) {

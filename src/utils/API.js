@@ -28,7 +28,7 @@ export const getVideoDetails = async (videoId) => {
 
 export const postComments = async (id, data) => {
     try {
-        const response = await axios.post(`${api_url}/videos/${id}/comments?api_key=${api_key}`, data);
+        const response = await axios.post(`http://localhost:8080/videos/${id}/comments`, data);
         return response;
     }
     catch (error) {
