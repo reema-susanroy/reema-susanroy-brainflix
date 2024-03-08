@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import './VideoItem.scss'
 
 function VideoItem({ videos }) {
-
     return (
         <article className='video--container'>
             <li key={videos.id} >

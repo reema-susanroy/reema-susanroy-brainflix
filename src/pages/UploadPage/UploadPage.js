@@ -3,24 +3,46 @@ import { useNavigate } from "react-router";
 import { useState } from "react";
 import axios from 'axios';
 import img from '../../assets/images/photos/Upload-video-preview.jpg'
+import ErrorPage from "../ErrorPage/ErrorPage";
+
 
 //A page to upload the video and navigates to homepage when clicked publish button and clears the form data
 function UploadPage() {
     const navigate = useNavigate();
     const [uploadForm, setUploadForm] = useState(false);
+    const [error, setError] = useState(false);
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
+    const [posterImage, setPosterImage] = useState('http://localhost:8080/images/new-video.jpg');
 
 
-    const handleChangeTitle=(event)=>{
+    console.log(posterImage);
+    const handleChangeTitle = (event) => {
         setTitle(event.target.value)
     }
 
-    const handleChangeDescription=(event)=>{
+    const handleChangeDescription = (event) => {
         setDescription(event.target.value)
     }
+    const handleChangeImage = (event) => {
+        setPosterImage(event.target.files[0]);
+    }
 
-    const formSubmit = () => {
+    const formSubmit = async () => {
+
+        const formData = new FormData();
+        formData.append('title', title);
+        formData.append('description', description);
+        formData.append('posterImage', posterImage);
+
+        try {
+            const postVideo = await axios.post('http://localhost:8080/videos', formData);
+            console.log(postVideo)
+        }
+        catch (error) {
+            console.log("Unable to post the video : " + error);
+            setError(true);
+        }
         setUploadForm(true);
     }
 
@@ -31,20 +53,9 @@ function UploadPage() {
     const goToHomepage = async (event) => {
         event.preventDefault();
         event.target.reset();
-        if(uploadForm){
-            let data ={
-                title: title,
-                description : description,
-            }
-            try{
-                const postVideo = await axios.post('http://localhost:8080/videos', data);
-                console.log(postVideo)
-            }   
-            catch(error){
-                console.log("Unable to post the video : "+error);
-            }
-        }
-
+    }
+    if (error) {
+        return <ErrorPage />;
     }
 
     const closePopup = () => {
@@ -71,6 +82,9 @@ function UploadPage() {
                                 <label className='form-video__title'>ADD A VIDEO DESCRIPTION
                                     <textarea onChange={handleChangeDescription} className='form-video__description-input' type="text" rows={4} placeholder='Add a description to your video' />
                                 </label>
+                                <label htmlFor='image' className='form-video__title'>UPLOAD AN IMAGE
+                                    <input onChange={handleChangeImage} className='form-video__title-input' type="file" accept='image/*' id='posterImage' name='posterImage' />
+                                </label>
                             </section>
                         </div>
                     </section>
@@ -87,7 +101,7 @@ function UploadPage() {
                         <section className='modal__title-cont'>
                             <h2 className='modal__title--title'>Success</h2>
                             <p className='modal__title'>Your video was successfully published!</p>
-                            <button onClick= {closePopup} className='modal__button'>OK</button>
+                            <button onClick={closePopup} className='modal__button'>OK</button>
                         </section>
                     </div>
                 </div>
