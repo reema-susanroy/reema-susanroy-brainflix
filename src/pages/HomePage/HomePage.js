@@ -7,7 +7,6 @@ import Comments from "../../components/Comments/Comments";
 import NextVideo from "../../components/NextVideo/NextVideo";
 import Loading from "../LoadingPage/LoadingPage";
 import ErrorPage from "../ErrorPage/ErrorPage";
-
 import {baseVideoId, getVideoList, getVideoDetails } from "../../utils/API";
 
 //Component to fetch videolist and video description for the selected/default video from the API
@@ -17,6 +16,11 @@ function HomePage() {
     const [nextVideo, setNextVideo] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
     const [hasError, sethasError] = useState(false);
+
+    // const [currentVideo, setCurrentVideo] = useState({
+    //     src: mainVideo.video,
+    //     poster: mainVideo.image,
+    // });
 
     useEffect(() => {
         const fetchMainVideo = async () => {
