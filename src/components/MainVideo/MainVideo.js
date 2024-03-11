@@ -1,48 +1,35 @@
 import './MainVideo.scss';
 import fullScreenImg from '../../assets/images/icons/fullscreen.svg'
-// import close_fullscreen from '../../assets/images/icons/close_fullscreen.svg'
 import play from '../../assets/images/icons/play.svg'
 import pause from '../../assets/images/icons/pause.svg'
-// import scrub from '../../assets/images/icons/scrub.svg'
 import volumeOff from '../../assets/images/icons/volume_off.svg'
 import volumeUp from '../../assets/images/icons/volume_up.svg'
 import { useState, useRef, useEffect } from 'react';
-import {base_url} from '../../utils/API'
+import { base_url } from '../../utils/API'
 
 //Component to display the video image on UI. Retrieve the image from the video object passed as props.
 function MainVideo({ mainVideo }) {
 
     const videoRef = useRef(null);
     const [playing, setPlaying] = useState(false);
-    // const [fullscreen, setFullscreen] = useState(false);
-    const [volume, setVolume] = useState(1);
-    const [volIcon, setVolIcon] = useState(volumeUp);
+    const [volume, setVolume] = useState(true);
     const [currentTime, setCurrentTime] = useState(0);
     const [duration, setDuration] = useState(0);
-    const [videoStart, setVideoStart] = useState(false);
 
     useEffect(() => {
         if (videoRef.current) {
             videoRef.current.load();
-            // const handleLoadedMetadata = () => {
-            //     setDuration(videoRef.current.duration);
-            //   };
-            //   videoRef.current.addEventListener('loadedmetadata', handleLoadedMetadata);
-
             setPlaying(false);
             setCurrentTime(0);
-            // setDuration(0);
-            // return () => {
-            //     videoRef.current.removeEventListener('loadedmetadata', handleLoadedMetadata);
-            //   };
         }
     }, [mainVideo]);
 
     useEffect(() => {
+        const currentVideoRef = videoRef.current;
         return () => {
-            if (videoRef.current) {
-                videoRef.current.pause();
-                videoRef.current.currentTime = 0;
+            if (currentVideoRef) {
+                currentVideoRef.pause();
+                currentVideoRef.currentTime = 0;
             }
         };
     }, [videoRef]);
@@ -51,8 +38,6 @@ function MainVideo({ mainVideo }) {
         setPlaying(false);
     }
     const togglePlayPause = () => {
-        console.log("clicked")
-        setVideoStart(true);
         setDuration(videoRef.current.duration);
         if (videoRef.current.paused) {
             videoRef.current.play();
@@ -61,7 +46,6 @@ function MainVideo({ mainVideo }) {
             videoRef.current.pause();
             setPlaying(false);
         }
-        // setPlaying(!playing);
     }
     const toggleFullscreen = () => {
         if (videoRef.current.requestFullscreen) {
@@ -70,28 +54,15 @@ function MainVideo({ mainVideo }) {
         else if (document.exitFullscreen) {
             document.exitFullscreen();
         }
-        // setFullscreen(!fullscreen);
     }
 
     const toggleVolume = () => {
-        if (volume > 0) {
-            // setVolume(videoRef.current.volume - 0.1);
-            // videoRef.current.volume = volume;
-            setVolIcon(volumeUp)
-        }
-        // else if (videoRef.current.volume < 1) {
-        //     // setVolume(videoRef.current.volume + 0.1);
-        //     // videoRef.current.volume = volume;
-        //     setVolIcon(true)
-        // }
-        else
-            setVolIcon(volumeOff)
+        videoRef.current.muted = !videoRef.current.muted;
+        setVolume(!volume);
     }
 
     const updateProgress = () => {
         setCurrentTime(videoRef.current.currentTime);
-        // setDuration(videoRef.current.duration);
-        // console.log(Number(videoRef.current.duration))
     }
 
     const handleSeek = (e) => {
@@ -108,18 +79,15 @@ function MainVideo({ mainVideo }) {
             return "00:00";
         }
         const minutes = Math.floor(time / 60);
-        // console.log("minutes"+minutes)
         const seconds = Math.floor(time % 60);
         return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
     }
 
     return (
         <div className="video__player">
-
-            {/* poster attribute displays the image as video placeholder.
-            controls attribute is to add video controls which is not for this sprint */}
-            {/* <video className='video__player--image' controls poster={`http://localhost:8080/${mainVideo.image}`} >
-            </video> */}
+            
+            {/* - poster attribute displays the image as video placeholder.
+                - custom video controls to make video functional */}
 
             <video ref={videoRef} onTimeUpdate={updateProgress} onEnded={handleVideoEnd}
                 onLoadedMetadata={() => {
@@ -137,15 +105,15 @@ function MainVideo({ mainVideo }) {
                         {/* <img src={scrub} alt="scrub" /> */}
                     </div>
                     <div className=" ">
-                        <p className='video__player--scrubCont__time'>{formatTime(currentTime)} / {formatTime(duration)}</p> 
+                        <p className='video__player--scrubCont__time'>{formatTime(currentTime)} / {formatTime(duration)}</p>
                     </div>
                 </div>
                 <div className='video__player--volumeCont'>
-                    <button onClick={toggleFullscreen} id="fullscreen" className='video__player--volumeCont__button'>
+                    <button onClick={toggleFullscreen} className='video__player--volumeCont__button'>
                         <img src={fullScreenImg} alt="fullscreen" className='video__player--togglebutton' />
                     </button>
-                    <button onClick={toggleVolume} id="volume" className='video__player--volumeCont__button' type="range" min="0" max="1" step="0.1" value="1">
-                        <img src={volIcon} alt="fullscreen" className='video__player--togglebutton' />
+                    <button onClick={toggleVolume} className='video__player--volumeCont__button'>
+                        <img src={volume ? volumeUp : volumeOff} alt="video-volume" className='video__player--togglebutton' />
                     </button>
                 </div>
             </section>

@@ -2,6 +2,7 @@
 @use '../../styles/partials/variable' as *;
 
 .upload-cont {
+    @include setPadding;
     @include tablet {
         @include setPadding_tablet;
     }
@@ -34,7 +35,6 @@
     }
 
     &__thumbnail {
-        @include setPadding();
         @include tablet {
             padding: 1rem 0 0;
         }

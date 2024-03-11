@@ -9,13 +9,12 @@ import { useEffect, useState } from 'react';
 // Component to display the video details based on the video object passed as a prop from the Video component
 // Props are destructured and accessed in this component 
 function VideoDetails({ mainVideo }) {
-    console.log(mainVideo)
     const { id, channel, timestamp, views, likes, description } = mainVideo;
     const [likeCount, setLikeCount] =useState();
  
     useEffect(() => {
         setLikeCount(likes);
-    }, [mainVideo]);
+    }, [likes]);
 
     const handleLike = async (id) =>{
         console.log("click")
@@ -37,7 +36,7 @@ function VideoDetails({ mainVideo }) {
                         <p>{views}</p>
                     </div>
                     <div className='video__social--icons'>
-                        <img onClick={() => handleLike(id)} src={likesIcon} alt='like-icon' />
+                        <img onClick={() => handleLike(id)} className= "video__social--icons-like" src={likesIcon} alt='like-icon' />
                         <p>{likeCount}</p>
                     </div>
                 </div>
