@@ -66,12 +66,10 @@ function MainVideo({ mainVideo }) {
     }
 
     const handleSeek = (e) => {
-        const seekTime = (e.nativeEvent.offsetX / e.target.offsetWidth) * duration;
+        const scrubberWidth = e.target.offsetWidth;
+        const clickPosition = e.nativeEvent.offsetX;
+        const seekTime = (clickPosition / scrubberWidth) * duration;
         videoRef.current.currentTime = seekTime;
-        // const scrubberWidth = e.target.offsetWidth;
-        // const clickPosition = e.nativeEvent.offsetX;
-        // const seekTime = (clickPosition / scrubberWidth) * duration;
-        // videoRef.current.currentTime = seekTime;
     }
 
     const formatTime = (time) => {
