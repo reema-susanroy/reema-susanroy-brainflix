@@ -4,7 +4,7 @@ import CommentDisplay from '../CommentDisplay/CommentDisplay'
 import './Comments.scss';
 import avatar from '../../assets/images/photos/Mohan-muruge.jpg'
 
-import { api_url, api_key, postComments, getVideoDetails } from "../../utils/API";
+import {base_url, postComments, getVideoDetails } from "../../utils/API";
 
 // Component to Get, Post and Delete comments on API
 // current video or the default video object containing entire video details is passed as props from the HomePage component 
@@ -76,7 +76,7 @@ function Comments({ mainVideo }) {
     //to delete comment from API
     const handleDeleteComment = async (commentId) => {
         try {
-            await axios.delete(`http://localhost:8080/videos/${id}/comments/${commentId}`);
+            await axios.delete(`${base_url}/videos/${id}/comments/${commentId}`);
             getData(id)
         }
         catch (error) {

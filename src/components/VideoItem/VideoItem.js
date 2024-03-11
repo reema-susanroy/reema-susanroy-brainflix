@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import './VideoItem.scss'
+import { base_url } from '../../utils/API';
 
 function VideoItem({ videos }) {
     return (
@@ -7,7 +8,7 @@ function VideoItem({ videos }) {
             <li key={videos.id} >
                 <Link to={`/videos/${videos.id}`} className="video">
                     <div className="video__image">
-                        <img className="video__image--img" src={`http://localhost:8080/${videos.image}`} alt={videos.name} />
+                        <img className="video__image--img" src={`${base_url}/${videos.image}`} alt={videos.name} />
                     </div>
                     <div className='video__details'>
                         <p className='video__details--title'>{videos.title} </p>

@@ -1,14 +1,12 @@
 import axios from "axios";
 
 //This file conatins calls related to API.
-export const api_url = "https://unit-3-project-api-0a5620414506.herokuapp.com";
-export const api_key = "485e90e7-2da9-42b1-9f2e-b89898b94889";
+export const base_url = "http://localhost:8080";
 export const baseVideoId = '84e96018-4022-434e-80bf-000ce4cd12b8';
 
 export const getVideoList = async () => {
     try {
-        const response = await axios.get('http://localhost:8080/videos')
-        //axios.get(`${api_url}/videos?api_key=${api_key}`);
+        const response = await axios.get(`${base_url}/videos`)
         return response;
     }
     catch (error) {
@@ -18,7 +16,7 @@ export const getVideoList = async () => {
 
 export const getVideoDetails = async (videoId) => {
     try {
-        const response = await axios.get(`http://localhost:8080/videos/${videoId}`);
+        const response = await axios.get(`${base_url}/videos/${videoId}`);
         return response;
     }
     catch (error) {
@@ -28,7 +26,7 @@ export const getVideoDetails = async (videoId) => {
 
 export const postComments = async (id, data) => {
     try {
-        const response = await axios.post(`http://localhost:8080/videos/${id}/comments`, data);
+        const response = await axios.post(`${base_url}/videos/${id}/comments`, data);
         return response;
     }
     catch (error) {

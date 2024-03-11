@@ -17,11 +17,6 @@ function HomePage() {
     const [isLoaded, setIsLoaded] = useState(false);
     const [hasError, sethasError] = useState(false);
 
-    // const [currentVideo, setCurrentVideo] = useState({
-    //     src: mainVideo.video,
-    //     poster: mainVideo.image,
-    // });
-
     useEffect(() => {
         const fetchMainVideo = async () => {
             try {

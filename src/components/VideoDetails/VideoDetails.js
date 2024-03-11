@@ -3,16 +3,24 @@ import './VideoDetails.scss';
 import viewsIcon from '../../assets/images/icons/views.svg'
 import likesIcon from '../../assets/images/icons/likes.svg'
 import {TimeFormat} from '../../utils/TimeFormat';
-import { useState } from 'react';
+import { base_url } from '../../utils/API';
+import { useEffect, useState } from 'react';
 
 // Component to display the video details based on the video object passed as a prop from the Video component
 // Props are destructured and accessed in this component 
 function VideoDetails({ mainVideo }) {
+    console.log(mainVideo)
     const { id, channel, timestamp, views, likes, description } = mainVideo;
-    const [likeCount, setLikeCount] =useState(likes)
+    const [likeCount, setLikeCount] =useState();
+ 
+    useEffect(() => {
+        setLikeCount(likes);
+    }, [mainVideo]);
 
     const handleLike = async (id) =>{
-        const response = await axios.put(`http://localhost:8080/videos/${id}/likes`)
+        console.log("click")
+        const response = await axios.put(`${base_url}/videos/${id}/likes`)
+        console.log(response.data)
         setLikeCount(response.data);
     }
     return (

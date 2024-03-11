@@ -1,12 +1,13 @@
 import './MainVideo.scss';
 import fullScreenImg from '../../assets/images/icons/fullscreen.svg'
-import close_fullscreen from '../../assets/images/icons/close_fullscreen.svg'
+// import close_fullscreen from '../../assets/images/icons/close_fullscreen.svg'
 import play from '../../assets/images/icons/play.svg'
 import pause from '../../assets/images/icons/pause.svg'
-import scrub from '../../assets/images/icons/scrub.svg'
+// import scrub from '../../assets/images/icons/scrub.svg'
 import volumeOff from '../../assets/images/icons/volume_off.svg'
 import volumeUp from '../../assets/images/icons/volume_up.svg'
 import { useState, useRef, useEffect } from 'react';
+import {base_url} from '../../utils/API'
 
 //Component to display the video image on UI. Retrieve the image from the video object passed as props.
 function MainVideo({ mainVideo }) {
@@ -18,14 +19,14 @@ function MainVideo({ mainVideo }) {
     const [volIcon, setVolIcon] = useState(volumeUp);
     const [currentTime, setCurrentTime] = useState(0);
     const [duration, setDuration] = useState(0);
-    const [videoStart , setVideoStart] =useState(false);
+    const [videoStart, setVideoStart] = useState(false);
 
     useEffect(() => {
         if (videoRef.current) {
             videoRef.current.load();
-            const handleLoadedMetadata = () => {
-                setDuration(videoRef.current.duration);
-              };
+            // const handleLoadedMetadata = () => {
+            //     setDuration(videoRef.current.duration);
+            //   };
             //   videoRef.current.addEventListener('loadedmetadata', handleLoadedMetadata);
 
             setPlaying(false);
@@ -37,27 +38,16 @@ function MainVideo({ mainVideo }) {
         }
     }, [mainVideo]);
 
-    // useEffect(() => {
-    //     setDuration(0);
-    //     // console.log("duration" + duration)
-    // },[]);
     useEffect(() => {
         return () => {
-          if (videoRef.current) {
-            videoRef.current.pause();
-            videoRef.current.currentTime = 0;
-          }
+            if (videoRef.current) {
+                videoRef.current.pause();
+                videoRef.current.currentTime = 0;
+            }
         };
-      }, [videoRef]);
+    }, [videoRef]);
 
-      const handleMetadataLoad = () => {
-        const videoDuration = videoRef.current.duration;
-        const formattedDuration = formatTime(videoDuration);
-        setDuration(formattedDuration);
-      };
-
-
-    const handleVideoEnd=()=>{
+    const handleVideoEnd = () => {
         setPlaying(false);
     }
     const togglePlayPause = () => {
@@ -99,18 +89,22 @@ function MainVideo({ mainVideo }) {
     }
 
     const updateProgress = () => {
-            setCurrentTime(videoRef.current.currentTime);
-            // setDuration(videoRef.current.duration);
-            // console.log(Number(videoRef.current.duration))
+        setCurrentTime(videoRef.current.currentTime);
+        // setDuration(videoRef.current.duration);
+        // console.log(Number(videoRef.current.duration))
     }
 
     const handleSeek = (e) => {
         const seekTime = (e.nativeEvent.offsetX / e.target.offsetWidth) * duration;
         videoRef.current.currentTime = seekTime;
+        // const scrubberWidth = e.target.offsetWidth;
+        // const clickPosition = e.nativeEvent.offsetX;
+        // const seekTime = (clickPosition / scrubberWidth) * duration;
+        // videoRef.current.currentTime = seekTime;
     }
-    
+
     const formatTime = (time) => {
-        if(time==0){
+        if (time === 0) {
             return "00:00";
         }
         const minutes = Math.floor(time / 60);
@@ -127,38 +121,33 @@ function MainVideo({ mainVideo }) {
             {/* <video className='video__player--image' controls poster={`http://localhost:8080/${mainVideo.image}`} >
             </video> */}
 
-            <video ref={videoRef} onTimeUpdate={updateProgress} onEnded={handleVideoEnd} onLoadedMetadata={() => {
-          setDuration(videoRef.current.duration);
-        }} className="video--player" poster={`http://localhost:8080/${mainVideo.image}`}  src={`http://localhost:8080/${mainVideo.video}`}></video>
-            <section className="controls">
-
-                <div className='button_container'>
-                    <button onClick={togglePlayPause} className="play-pause background-color">
-                        <img className="background" src={playing ? pause : play} alt="play-button" />
+            <video ref={videoRef} onTimeUpdate={updateProgress} onEnded={handleVideoEnd}
+                onLoadedMetadata={() => {
+                    setDuration(videoRef.current.duration);
+                }}
+                className="video__player--video" poster={`${base_url}/${mainVideo.image}`} src={`${base_url}/${mainVideo.video}`}></video>
+            <section className="video__player--controls">
+                <div className='video__player--buttonCont'>
+                    <button onClick={togglePlayPause} className="video__player--background">
+                        <img className='video__player--buttonCont__button' src={playing ? pause : play} alt="play-button" />
                     </button>
                 </div>
-
-                <div className='scrub_container background-color'>
-                    <div className="scrubber" onClick={handleSeek}>
-                        <img src={scrub} alt="scrub" />
+                <div className='video__player--scrubCont video__player--background'>
+                    <div className="video__player--scrubCont__scrubber" onClick={handleSeek}  >
+                        {/* <img src={scrub} alt="scrub" /> */}
                     </div>
-                    {/* <div className="time ">{formatTime(currentTime, duration)}</div> */}
-                   
-                    <div className="time "> {formatTime(currentTime)} / {formatTime(duration) } </div>
-                    {/* {setVideoStart ? (<>{Number(formatTime(duration))} </>) : (<>{formatTime(currentTime)} </>) } </div> */}
-         
-         
+                    <div className=" ">
+                        <p className='video__player--scrubCont__time'>{formatTime(currentTime)} / {formatTime(duration)}</p> 
+                    </div>
                 </div>
-
-                <div className='volume_container  '>
-                    <button onClick={toggleFullscreen} id="fullscreen" className='background-color'>
-                        <img src={fullScreenImg} alt="fullscreen" className='togglebutton' />
+                <div className='video__player--volumeCont'>
+                    <button onClick={toggleFullscreen} id="fullscreen" className='video__player--volumeCont__button'>
+                        <img src={fullScreenImg} alt="fullscreen" className='video__player--togglebutton' />
                     </button>
-                    <button onClick={toggleVolume} id="volume" className='background-color' type="range" min="0" max="1" step="0.1" value="1">
-                        <img src={volIcon} alt="fullscreen" className='togglebutton' />
+                    <button onClick={toggleVolume} id="volume" className='video__player--volumeCont__button' type="range" min="0" max="1" step="0.1" value="1">
+                        <img src={volIcon} alt="fullscreen" className='video__player--togglebutton' />
                     </button>
                 </div>
-
             </section>
         </div>
     )

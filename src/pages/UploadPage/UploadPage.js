@@ -4,6 +4,7 @@ import { useState } from "react";
 import axios from 'axios';
 import img from '../../assets/images/photos/Upload-video-preview.jpg'
 import ErrorPage from "../ErrorPage/ErrorPage";
+import { base_url } from '../../utils/API';
 
 
 //A page to upload the video and navigates to homepage when clicked publish button and clears the form data
@@ -13,10 +14,8 @@ function UploadPage() {
     const [error, setError] = useState(false);
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
-    const [posterImage, setPosterImage] = useState('http://localhost:8080/images/new-video.jpg');
+    const [posterImage, setPosterImage] = useState(`${base_url}/images/new-video.jpg`);
 
-
-    console.log(posterImage);
     const handleChangeTitle = (event) => {
         setTitle(event.target.value)
     }
@@ -36,8 +35,7 @@ function UploadPage() {
         formData.append('posterImage', posterImage);
 
         try {
-            const postVideo = await axios.post('http://localhost:8080/videos', formData);
-            console.log(postVideo)
+            await axios.post(`${base_url}/videos`, formData);
         }
         catch (error) {
             console.log("Unable to post the video : " + error);
